@@ -3,14 +3,14 @@ insert into semester(semester_label) values ('[2017-2018] Semester 1'), ('[2017-
 
 insert into degree(degree_label) values('Graduate Diploma in System Analysis'), ('Master of Technology in Software Engineering');
 
-insert into student(first_name, last_name, middle_name, birth_date, gender, email, mobile, level, status, semester_id, degree_id, address)
-values('Chi', 'Phung', 'Khanh', '1996-08-25', 'Female', 'khanhchi2596@gmail.com', '98912598','Year 1', 'Enrolling', 5, 1, ''),
-('Ying', 'Feng', 'Li', '1995-09-25', 'Female', 'fengliying@gmail.com', '87654321', 'Year 1', 'Enrolling', 5, 1, ''),
-('Bo', 'Wang', 'Yi', '1997-04-23', 'Male', 'wangyibo@gmail.com', 'Year 1', '86083571','Enrolling', 5, 1, ''),
-('Zhan', 'Xiao', '', '1991-08-11', 'FMale', 'xiaozhan@gmail.com', 'Year 1', '71672878', 'Enrolling', 5, 1, '' ),
-('Fan', 'Wu', 'Yi', '1992-05-21', 'Male', 'kriswu@gmail.com', '92376743', 'Year 1', 'Enrolling', 5, 1, '' ),
-('Hun', 'Oh', 'Se', '1990-07-07', 'Male', 'ohsehun@gmail.com', '81387481','Year 1', 'Enrolling', 5, 1, '' ),
-('Kyo', 'Song', 'Hye', '1988-02-26', 'Female', 'songhyekyo@gmail.com', '81368434','Year 1', 'Enrolling', 5, 1, '' );
+insert into student(first_name, last_name, middle_name, birth_date, gender, email, mobile, level, status, semester_id, degree_id, address, GPA)
+values('Chi', 'Phung', 'Khanh', '1996-08-25', 'Female', 'khanhchi2596@gmail.com', '98912598','Year 1', 'Enrolling', 5, 1, '', 0.0),
+('Ying', 'Feng', 'Li', '1995-09-25', 'Female', 'fengliying@gmail.com', '87654321', 'Year 1', 'Enrolling', 5, 1, '', 0.0),
+('Bo', 'Wang', 'Yi', '1997-04-23', 'Male', 'wangyibo@gmail.com', '86083571', 'Year 1', 'Enrolling', 5, 1, '', 0.0),
+('Zhan', 'Xiao', '', '1991-08-11', 'Male', 'xiaozhan@gmail.com', '71672878', 'Year 1', 'Enrolling', 5, 1, '', 0.0),
+('Fan', 'Wu', 'Yi', '1992-05-21', 'Male', 'kriswu@gmail.com', '92376743', 'Year 1', 'Enrolling', 5, 1, '', 0.0),
+('Hun', 'Oh', 'Se', '1990-07-07', 'Male', 'ohsehun@gmail.com', '81387481','Year 1', 'Enrolling', 5, 1, '', 0.0),
+('Kyo', 'Song', 'Hye', '1988-02-26', 'Female', 'songhyekyo@gmail.com', '81368434','Year 1', 'Enrolling', 5, 1, '', 0.0);
 
 
 insert into department(department_name) values('Institute of System Science'), ('School of computing'), ('Business school'), ('Faculty of Science');
@@ -22,12 +22,17 @@ insert into course(course_code, course_name, course_unit, department_id) values
 ('SA4104', 'Mobile Application Development', 6, 1),
 ('SA4105', 'Web Application Development', 8, 1);
 
-insert into student_course(course_id, semester_id, student_id) values
-(1, 5, 1), (1, 5, 2), (1, 5, 3), (1, 5, 4), (1, 5, 5), (1, 5, 6), (1, 5, 7),
-(2, 5, 1), (2, 5, 2), (2, 5, 3), (2, 5, 4), (2, 5, 5), (2, 5, 6), (2, 5, 7),
-(3, 5, 1), (3, 5, 2), (3, 5, 3), (3, 5, 4), (3, 5, 5), (3, 5, 6), (3, 5, 7),
-(4, 5, 1), (4, 5, 2), (4, 5, 3), (4, 5, 4), (4, 5, 5), (4, 5, 6), (4, 5, 7),
-(5, 5, 1), (5, 5, 2), (5, 5, 3), (5, 5, 4), (5, 5, 5), (5, 5, 6), (5, 5, 7);
+insert into student_course(course_id, semester_id, student_id, score, status) values
+(1, 5, 1, 0.0, 'Approved'), (1, 5, 2, 0.0, 'Approved'), (1, 5, 3, 0.0, 'Approved'), (1, 5, 4, 0.0, 'Approved'),
+(1, 5, 5, 0.0, 'Approved'), (1, 5, 6, 0.0, 'Approved'), (1, 5, 7, 0.0, 'Approved'),
+(2, 5, 1, 0.0, 'Approved'), (2, 5, 2, 0.0, 'Approved'), (2, 5, 3, 0.0, 'Approved'), (2, 5, 4, 0.0, 'Approved'),
+(2, 5, 5, 0.0, 'Approved'), (2, 5, 6, 0.0, 'Approved'), (2, 5, 7, 0.0, 'Approved'),
+(3, 5, 1, 0.0, 'Approved'), (3, 5, 2, 0.0, 'Approved'), (3, 5, 3, 0.0, 'Approved'), (3, 5, 4, 0.0, 'Approved'),
+(3, 5, 5, 0.0, 'Approved'), (3, 5, 6, 0.0, 'Approved'), (3, 5, 7, 0.0, 'Approved'),
+(4, 5, 1, 0.0, 'Approved'), (4, 5, 2, 0.0, 'Approved'), (4, 5, 3, 0.0, 'Approved'), (4, 5, 4, 0.0, 'Approved'),
+(4, 5, 5, 0.0, 'Approved'), (4, 5, 6, 0.0, 'Approved'), (4, 5, 7, 0.0, 'Approved'),
+(5, 5, 1, 0.0, 'Approved'), (5, 5, 2, 0.0, 'Approved'), (5, 5, 3, 0.0, 'Approved'), (5, 5, 4, 0.0, 'Approved'),
+(5, 5, 5, 0.0, 'Approved'), (5, 5, 6, 0.0, 'Approved'), (5, 5, 7, 0.0, 'Approved');
 
 insert into lecturer(first_name, middle_name, last_name, gender, birth_date, email, mobile, department_id)
 values('Esther', '', 'Tan', 'Female', '1982-07-12', 'esthertan@nus.edu.sg', '89217764', 1),
@@ -49,18 +54,26 @@ insert into admin(first_name, middle_name, last_name, gender, birth_date, email,
 ('Megan', '', 'Wang', 'Female', '1986-11-12', 'meganwang@nus.edu.sg', '98737646');
 
 insert into admin_user(admin_id, username, password) values
-(1, 'taychialee', '12345678'), (2, 'meganwang', '12345678');
+(1, 'taychialee', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(2, 'meganwang', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS');
 
 
 insert into lecturer_user(lecturer_id, username, password) values
-(1, 'esthertan', '12345678'), (2, 'chiayuenkwan', '12345678'),
-(3, 'tancherwah', '12345678'), (4, 'nguyentritin', '12345678'),
-(5, 'leeboonkee', '12345678'), (6, 'felicitas', '12345678');
+(1, 'esthertan', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(2, 'chiayuenkwan', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(3, 'tancherwah', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(4, 'nguyentritin', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(5, 'leeboonkee', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(6, 'felicitas', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS');
 
 insert into student_user(student_id, username, password) values
-(1, 'phungkhanhchi', '12345678'), (2, 'fengliying', '12345678'),
-(3, 'wangyibo', '12345678'), (4, 'xiaozhan', '12345678'),
-(5, 'wuyifan', '12345678'), (6, 'ohsehun', '12345678'), (7, 'songhyekyo', '12345678');
+(1, 'phungkhanhchi', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(2, 'fengliying', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(3, 'wangyibo', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(4, 'xiaozhan', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(5, 'wuyifan', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(6, 'ohsehun', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),
+(7, 'songhyekyo', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS');
 
 
 

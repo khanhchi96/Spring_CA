@@ -18,4 +18,17 @@ public class StudentUser extends User implements Serializable{
     public StudentUser(UserId studentUserId, String password) {
         super(studentUserId, password);
     }
+
+    public Student getStudentUser() {
+        return studentUser;
+    }
+
+    public void setStudentUser(Student studentUser) {
+        this.studentUser = studentUser;
+    }
+
+    @Override
+    public String getRole(){
+        return "STUDENT";
+    }
 }

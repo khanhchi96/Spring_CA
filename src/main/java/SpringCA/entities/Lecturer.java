@@ -2,6 +2,7 @@ package SpringCA.entities;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -24,7 +25,7 @@ public class Lecturer extends Person{
 
     public Lecturer(){}
 
-    public Lecturer(String firstName, String middleName, String lastName, String gender, LocalDateTime birthDate,
+    public Lecturer(String firstName, String middleName, String lastName, String gender, Date birthDate,
                     String address, String email, String mobile, Department departmentLecturer) {
         super(firstName, middleName, lastName, gender, birthDate, address, email, mobile);
         this.departmentLecturer = departmentLecturer;

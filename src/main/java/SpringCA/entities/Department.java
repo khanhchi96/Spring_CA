@@ -16,6 +16,8 @@ public class Department {
     @OneToMany(mappedBy = "departmentLecturer")
     private List<Lecturer> lecturers;
 
+    public Department(){}
+
     public Department(String departmentName) {
         this.departmentName = departmentName;
     }

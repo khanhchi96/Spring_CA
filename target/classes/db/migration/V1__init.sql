@@ -104,6 +104,7 @@ course_id integer not null,
 semester_id integer not null,
 student_id integer not null,
 score float,
+status varchar(8),
 primary key (course_id, semester_id, student_id)
 );
 

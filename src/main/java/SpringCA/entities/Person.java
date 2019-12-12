@@ -1,23 +1,39 @@
 package SpringCA.entities;
 
+import SpringCA.Validation.ContactNumberConstraint;
+import SpringCA.Validation.EmailConstraint;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @MappedSuperclass
 public class Person {
+
+    @NotEmpty(message = "Firstname cannot be blank")
     private String firstName;
     private String middleName;
+    @NotEmpty(message = "Lastname cannot be blank")
     private String lastName;
     private String gender;
-    private LocalDateTime birthDate;
+
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private Date birthDate;
     private String address;
+
+    @EmailConstraint
     private String email;
+
+    @ContactNumberConstraint
     private String mobile;
 
     public Person(){}
 
     public Person(String firstName, String middleName, String lastName, String gender,
-                  LocalDateTime birthDate, String address, String email, String mobile) {
+                  Date birthDate, String address, String email, String mobile) {
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -60,11 +76,11 @@ public class Person {
         this.gender = gender;
     }
 
-    public LocalDateTime getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDateTime birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 

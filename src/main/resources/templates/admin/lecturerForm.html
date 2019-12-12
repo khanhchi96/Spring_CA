@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>ReactJS + Spring Data REST</title>
+</head>
+<body>
+<form th:action = "@{/admin/lecturer/save/{id}(id=${id})}"
+      th:object="${lecturer}" method="post">
+    <label for="firstName">First name: </label>
+    <input type="text" th:field="*{firstName}" id="firstName"><br>
+    <p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+
+    <label for="lastName">Last name </label>
+    <input type="text" th:field="*{lastName}" id="lastName"><br>
+    <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+
+    <label for="middleName">Middle name </label>
+    <input type="text" th:field="*{middleName}" id="middleName"><br>
+
+    <label for="gender">Gender </label>
+    <select th:field="*{gender}" id="gender">
+        <option th:value="'Male'" th:text="Male"></option>
+        <option th:value="'Female'" th:text="Female"></option>
+    </select>
+
+    <label for="birthDate">Birthdate </label>
+    <input type="date" th:field="*{birthDate}" id="birthDate"><br>
+
+    <label for="address">Address </label>
+    <input type="text" th:field="*{address}" id="address"><br>
+
+    <label for="mobile">Mobile </label>
+    <input type="text" th:field="*{mobile}" id="mobile"><br>
+    <p th:if="${#fields.hasErrors('mobile')}" th:errors="*{mobile}"></p>
+
+    <label for="email">Email </label>
+    <input type="text" th:field="*{email}" id="email"><br>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+    <label for="department">Degree </label>
+    <select th:field="*{department.departmentId}" id="department">
+        <option th:each="department: ${departments}" th:value=${department.departmentId} th:text=${department.departmentName}></option>
+    </select>
+
+    <input type="submit" value="Save">
+</form>
+
+</body>
+</html>

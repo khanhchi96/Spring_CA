@@ -8,15 +8,15 @@ public class Degree {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int degreeId;
-    private String degree_label;
+    private String degreeLabel;
 
     @OneToMany(mappedBy = "degree")
     private List<Student> students;
 
     public Degree(){}
 
-    public Degree(String degree_label) {
-        this.degree_label = degree_label;
+    public Degree(String degreeLabel) {
+        this.degreeLabel = degreeLabel;
     }
 
     public int getDegreeId() {
@@ -27,11 +27,11 @@ public class Degree {
         this.degreeId = degreeId;
     }
 
-    public String getDegree_label() {
-        return degree_label;
+    public String getDegreeLabel() {
+        return degreeLabel;
     }
 
-    public void setDegree_label(String degree_label) {
-        this.degree_label = degree_label;
+    public void setDegreeLabel(String degreeLabel) {
+        this.degreeLabel = degreeLabel;
     }
 }

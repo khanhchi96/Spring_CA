@@ -1,7 +1,11 @@
 package SpringCA.entities;
 
+import SpringCA.Repository.DegreeRepository;
+import SpringCA.Repository.SemesterRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -28,7 +32,7 @@ public class Student extends Person{
 
     public Student(){}
 
-    public Student(String firstName, String middleName, String lastName, String gender, LocalDateTime birthDate,
+    public Student(String firstName, String middleName, String lastName, String gender, Date birthDate,
                    String address, String email, String mobile, String status, String level, Semester semesterEnrolled,
                    float GPA, Degree degree) {
         super(firstName, middleName, lastName, gender, birthDate, address, email, mobile);

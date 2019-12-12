@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>ReactJS + Spring Data REST</title>
+</head>
+<body>
+<div>
+    <p th:if="${student.middleName} != null">
+        [[${student.lastName} + ' ' + ${student.middleName} + ' ' + ${student.firstName}]]
+    </p>
+    <p th:if="${student.middleName} == null">[[${student.lastName} + ' ' + ${student.firstName}]]</p>
+    <p> Gender: [[${student.gender}}]]</p>
+    <p> Birthdate: [[${#dates.format(student.birthDate, 'dd-MM-yyyy')}]]</p>
+    <p> Mobile phone: [[${student.mobile}]]</p>
+    <p> Email: [[${student.email}]]</p>
+    <p> Address: [[${student.address}]]</p>
+    <p> Degree: [[${student.degree.degreeLabel}]]</p>
+    <p> Semester: [[${student.semesterEnrolled.semesterLabel}]]</p>
+    <p> Level: [[${student.level}]]</p>
+    <p> Status: [[${student.status}]]</p>
+    <p> GPA: [[${student.GPA}]]</p>
+
+    <p> List of courses:</p>
+    <tr th:each="course: ${coursesByStudent}">
+        <td></td>
+        <td th:text="course.courseByStudent.semesterStudentCourse"></td>
+        <td th:text="course.courseByStudent.courseCode"></td>
+        <td th:text="course.courseByStudent.courseName"></td>
+        <td th:text="course.courseByStudent.score"></td>
+    </tr>
+
+    <p><a th:href="@{/admin/student/edit/{id}(id=${student.studentId})}">Edit</a></p>
+    <p><a th:href="@{/admin/student/delete/{id}(id=${student.studentId})}">Delete</a></p>
+</div>
+</body>
+</html>

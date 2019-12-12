@@ -18,4 +18,9 @@ public class AdminUser extends User implements Serializable{
     public AdminUser(UserId studentUserId, String password) {
         super(studentUserId, password);
     }
+
+    @Override
+    public String getRole(){
+        return "ADMIN";
+    }
 }

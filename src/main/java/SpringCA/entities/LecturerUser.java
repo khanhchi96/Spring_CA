@@ -18,4 +18,17 @@ public class LecturerUser extends User implements Serializable{
     public LecturerUser(UserId studentUserId, String password) {
         super(studentUserId, password);
     }
+
+    public Lecturer getLecturerUser() {
+        return lecturerUser;
+    }
+
+    public void setLecturerUser(Lecturer lecturerUser) {
+        this.lecturerUser = lecturerUser;
+    }
+
+    @Override
+    public String getRole(){
+        return "LECTURER";
+    }
 }

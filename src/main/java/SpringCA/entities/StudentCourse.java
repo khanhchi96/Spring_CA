@@ -22,6 +22,8 @@ public class StudentCourse {
     @JoinColumn(name = "semesterId")
     private Semester semesterStudentCourse;
 
+    private String status;
+
     private float score;
 
     public StudentCourse(){}
