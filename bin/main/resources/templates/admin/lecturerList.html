@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>ReactJS + Spring Data REST</title>
+</head>
+<body>
+
+<div th:switch="${lecturers}">
+    <h2 th:case="null">No lecturers yet!</h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Birthdate</th>
+                <th>Mobile phone</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Department</th>
+                <th>Details</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="lecturer : ${lecturers}">
+                <td th:if="${lecturer.middleName} != null">
+                    [[${lecturer.lastName} + ' ' + ${lecturer.middleName} + ' ' + ${lecturer.firstName}]]
+                </td>
+                <td th:if="${lecturer.middleName} == null">[[${lecturer.lastName} + ' ' + ${lecturer.firstName}]]</td>
+                <td th:text="${lecturer.gender}"></td>
+                <td th:text="${#dates.format(lecturer.birthDate, 'dd-MM-yyyy')}"></td>
+                <td th:text="${lecturer.mobile}"></td>
+                <td th:text="${lecturer.email}"></td>
+                <td th:text="${lecturer.address}"></td>
+                <td th:text="${lecturer.departmentLecturer.departmentName}"></td>
+                <td><a th:href="@{/admin/lecturer/{id}(id=${lecturer.lecturerId})}">Details</a></td>
+                <td><a th:href="@{/admin/lecturer/edit/{id}(id=${lecturer.lecturerId})}">Edit</a></td>
+                <td><a th:href="@{/admin/lecturer/delete/{id}(id=${lecturer.lecturerId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/admin/lecturer/addlecturer">Add a new lecturer</a></p>
+</div>
+
+</body>
+</html>
