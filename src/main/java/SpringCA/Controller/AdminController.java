@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -19,17 +18,17 @@ import java.util.Set;
 @RequestMapping("/admin")
 public class AdminController {
 
-    StudentRepository studentRepository;
-    SemesterRepository semesterRepository;
-    DegreeRepository degreeRepository;
-    CourseRepository courseRepository;
-    LecturerRepository lecturerRepository;
-    LecturerCourseRepository lecturerCourseRepository;
-    StudentCourseRepository studentCourseRepository;
-    DepartmentRepository departmentRepository;
-    StudentUserRepository studentUserRepository;
-    LecturerUserRepository lecturerUserRepository;
-    UserService userService;
+    private StudentRepository studentRepository;
+    private SemesterRepository semesterRepository;
+    private DegreeRepository degreeRepository;
+    private CourseRepository courseRepository;
+    private LecturerRepository lecturerRepository;
+    private LecturerCourseRepository lecturerCourseRepository;
+    private StudentCourseRepository studentCourseRepository;
+    private DepartmentRepository departmentRepository;
+    private StudentUserRepository studentUserRepository;
+    private LecturerUserRepository lecturerUserRepository;
+    private UserService userService;
 
     @Autowired
     SpringCA.csvWriter.CsvWriter csvWriter;
