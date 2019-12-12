@@ -2,13 +2,13 @@ package SpringCA.Controller;
 
 import SpringCA.Repository.*;
 import SpringCA.Service.UserService;
-import SpringCA.csvWriter.CsvWriter;
 import SpringCA.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -19,25 +19,27 @@ import java.util.Set;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private StudentRepository studentRepository;
-    private SemesterRepository semesterRepository;
-    private DegreeRepository degreeRepository;
-    private CourseRepository courseRepository;
-    private LecturerRepository lecturerRepository;
-    private LecturerCourseRepository lecturerCourseRepository;
-    private StudentCourseRepository studentCourseRepository;
-    private DepartmentRepository departmentRepository;
-    private StudentUserRepository studentUserRepository;
-    private LecturerUserRepository lecturerUserRepository;
-    private UserService userService;
-    private SpringCA.csvWriter.CsvWriter csvWriter;
+    StudentRepository studentRepository;
+    SemesterRepository semesterRepository;
+    DegreeRepository degreeRepository;
+    CourseRepository courseRepository;
+    LecturerRepository lecturerRepository;
+    LecturerCourseRepository lecturerCourseRepository;
+    StudentCourseRepository studentCourseRepository;
+    DepartmentRepository departmentRepository;
+    StudentUserRepository studentUserRepository;
+    LecturerUserRepository lecturerUserRepository;
+    UserService userService;
+
+    @Autowired
+    SpringCA.csvWriter.CsvWriter csvWriter;
 
     @Autowired
     public AdminController(StudentRepository studentRepository, SemesterRepository semesterRepository,
                            DegreeRepository degreeRepository, CourseRepository courseRepository,
                            LecturerRepository lecturerRepository, LecturerCourseRepository lecturerCourseRepository,
                            StudentCourseRepository studentCourseRepository, DepartmentRepository departmentRepository,
-                           StudentUserRepository studentUserRepository, LecturerUserRepository lecturerUserRepository, UserService userService, CsvWriter csvWriter) {
+                           StudentUserRepository studentUserRepository, LecturerUserRepository lecturerUserRepository, UserService userService) {
         this.studentRepository = studentRepository;
         this.semesterRepository = semesterRepository;
         this.degreeRepository = degreeRepository;
@@ -49,7 +51,6 @@ public class AdminController {
         this.studentUserRepository = studentUserRepository;
         this.lecturerUserRepository = lecturerUserRepository;
         this.userService = userService;
-        this.csvWriter = csvWriter;
     }
 
 
@@ -99,19 +100,19 @@ public class AdminController {
     }
 
     @GetMapping("/student/addStudent")
-    public String addStudent(Model model) {
+    public String addStudent(Student student, Model model) {
         model.addAttribute("id", 0);
         return "admin/studentForm";
     }
 
     @GetMapping("/course/addCourse")
-    public String addCourse(Model model) {
+    public String addCourse(Course course, Model model) {
         model.addAttribute("id", 0);
         return "admin/courseForm";
     }
 
     @GetMapping("/student/addLecturer")
-    public String addLecturer(Model model) {
+    public String addLecturer(Lecturer lecturer, Model model) {
         model.addAttribute("id", 0);
         return "admin/lecturerForm";
     }
@@ -195,7 +196,7 @@ public class AdminController {
     }
 
     @GetMapping("/student/delete/{id}")
-    public String deleteStudent(@PathVariable("id") int id) {
+    public String deleteStudent(@PathVariable("id") int id, Model model) {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
         studentRepository.delete(student);
@@ -204,7 +205,7 @@ public class AdminController {
     }
 
     @GetMapping("/course/delete/{id}")
-    public String deleteCourse(@PathVariable("id") int id) {
+    public String deleteCourse(@PathVariable("id") int id, Model model) {
         Course course = courseRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid course Id:" + id));
         courseRepository.delete(course);
@@ -251,6 +252,33 @@ public class AdminController {
                             @PathVariable("semesterId") int semesterId,
                             HttpServletResponse res) throws IOException {
         csvWriter.writeCsv(courseId, semesterId, res);
+//        res.setContentType("application/octet-stream");
+//        res.setHeader("Content-Disposition", "attachment; filename=\"TSR.csv\"");
+//        try {
+//            // Write the header line
+//            OutputStream o = res.getOutputStream();
+//            String header = "ID,ControlNumber\n";
+//            o.write(header.getBytes());
+//
+//            // Write the data lines
+////            Vector records = getRecords(); // Custom to my app
+////            Iterator i = records.iterator();
+////            while (i.hasNext()) {
+////                // Custom data object; use your own
+////                StandardReportDTO sr = (StandardReportDTO) i.next();
+//                StringBuffer line = new StringBuffer();
+//                line.append("aaaa");
+//                line.append(",");
+//                line.append("bbbb");
+//                line.append("\n");
+//                o.write(line.toString().getBytes());
+//                o.flush();
+////            }
+//
+//        } catch (Exception e) {
+////          log.error(e);
+//        }
+
     }
 
 
@@ -292,4 +320,6 @@ public class AdminController {
         model.addAttribute("coursesByLecturer", coursesByLecturer);
         return "admin/lecturerDetail";
     }
+
+
 }
