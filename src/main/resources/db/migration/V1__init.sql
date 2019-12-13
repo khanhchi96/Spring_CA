@@ -15,7 +15,7 @@ create table admin_user (
 admin_id integer not null,
 username varchar(45) not null,
 password varchar(255) not null,
-primary key (admin_id, username)
+primary key (username)
 );
 
 create table course (
@@ -72,7 +72,7 @@ create table lecturer_user (
 lecturer_id integer not null,
 username varchar(45) not null,
 password varchar(255) not null,
-primary key (lecturer_id, username)
+primary key (username)
 );
 
 create table semester (
@@ -112,7 +112,15 @@ create table student_user (
 student_id integer not null,
 username varchar(45) not null,
 password varchar(255) not null,
-primary key (student_id, username)
+primary key (username)
+);
+
+create table password_reset_token_student(
+id integer not null auto_increment,
+token varchar(255) not null,
+expiry_date datetime,
+student_username varchar(45) not null,
+primary key (id)
 );
 
 
@@ -143,3 +151,5 @@ alter table student_course add constraint FKsy9amf8ludquvxewx1ojyfru9 foreign ke
 alter table student_course add constraint FKq7yw2wg9wlt2cnj480hcdn6dq foreign key (student_id) references student (student_id);
 
 alter table student_user add constraint FKjeq26fngvtwig8bq45x3ix1wy foreign key (student_id) references student (student_id);
+
+alter table password_reset_token_student add constraint FKjeq26fngvuahg8bq45y3ix1iwe foreign key (student_username) references student_user(username);

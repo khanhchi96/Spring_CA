@@ -1,14 +1,14 @@
 package SpringCA.Service;
 
+import SpringCA.Repository.PasswordResetTokenStudentRepository;
+import SpringCA.entities.*;
 import SpringCA.entities.CompositeId.UserId;
-import SpringCA.entities.Lecturer;
-import SpringCA.entities.LecturerUser;
-import SpringCA.entities.Student;
-import SpringCA.entities.StudentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 @Component
 public class UserService {
@@ -25,22 +25,25 @@ public class UserService {
         this.emailServiceImpl = emailServiceImpl;
     }
 
+    @Autowired
+    PasswordResetTokenStudentRepository passwordResetTokenStudentRepository;
+
     public StudentUser setStudentUser(Student student) {
         StudentUser studentUser = new StudentUser();
-        studentUser.setUserId(new UserId("S" + setUsername(student.getStudentId()), student.getStudentId()));
+        studentUser.setUsername("S" + setUsername(student.getStudentId()));
         studentUser.setStudentUser(student);
         String password = getAlphaNumericString();
         System.out.println(password);
         studentUser.setPassword(passwordEncoder().encode(password));
         String text = "Dear student,\nThis is your student user credentials:\nYour username: " + "S" + setUsername(student.getStudentId()) + "\nYour password: " + password
                 + "\nPlease use them to login to ISS system.\nXoxo,\nGossip girl";
-        emailServiceImpl.sendSimpleMessage(student.getEmail(), "ISS MANAGEMENT SYSTEM - USER REGISTRATION", text);
+        emailServiceImpl.sendSimpleMessage(new String[] {student.getEmail()}, "ISS MANAGEMENT SYSTEM - USER REGISTRATION", text);
         return studentUser;
     }
 
     public LecturerUser setLecturerUser(Lecturer lecturer) {
         LecturerUser lecturerUser = new LecturerUser();
-        lecturerUser.setUserId(new UserId("L" + setUsername(lecturer.getLecturerId()), lecturer.getLecturerId()));
+        lecturerUser.setUsername("L" + setUsername(lecturer.getLecturerId()));
         lecturerUser.setLecturerUser(lecturer);
         String password = getAlphaNumericString();
         System.out.println(password);
@@ -70,6 +73,12 @@ public class UserService {
                     .charAt(index));
         }
         return sb.toString();
+    }
+
+
+    public void createPasswordResetTokenForUser(StudentUser studentUser, String token) {
+        PasswordResetTokenStudent myToken = new PasswordResetTokenStudent(token, studentUser);
+        passwordResetTokenStudentRepository.save(myToken);
     }
 
 }

@@ -36,13 +36,13 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = adminUserRepository.findByUserId_Username(username);
+        User user = adminUserRepository.findByUsername(username);
         if (user == null) {
-            user = lecturerUserRepository.findByUserId_Username(username);
+            user = lecturerUserRepository.findByUsername(username);
         }
 
         if (user == null) {
-            user = studentUserRepository.findByUserId_Username(username);
+            user = studentUserRepository.findByUsername(username);
         }
         if (user == null) throw new UsernameNotFoundException("user not found");
 
@@ -51,7 +51,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole()));
 
 
-        return new org.springframework.security.core.userdetails.User(user.getUserId().getUsername(), user.getPassword(),
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),
                 grantedAuthorities);
     }
 }

@@ -198,8 +198,8 @@ public class AdminController {
     public String deleteStudent(@PathVariable("id") int id, Model model) {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        studentUserRepository.delete(studentUserRepository.findByStudentUser_StudentId(id));
         studentRepository.delete(student);
-        studentUserRepository.delete(studentUserRepository.findByUserId_User(id));
         return "redirect:/admin/student/list";
     }
 
@@ -215,8 +215,8 @@ public class AdminController {
     public String deleteLecturer(@PathVariable("id") int id) {
         Lecturer lecturer = lecturerRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid lecturer Id:" + id));
+        lecturerUserRepository.delete(lecturerUserRepository.findByLecturerUser_LecturerId(id));
         lecturerRepository.delete(lecturer);
-        lecturerUserRepository.delete(lecturerUserRepository.findByUserId_User(id));
         return "redirect:/admin/lecturer/list";
     }
 

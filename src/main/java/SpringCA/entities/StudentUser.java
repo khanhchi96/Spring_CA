@@ -6,17 +6,17 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class StudentUser extends User implements Serializable{
+public class StudentUser extends User{
 
     @OneToOne
     @JoinColumn(name = "student_id")
-    @MapsId("user")
     private Student studentUser;
 
     public StudentUser(){}
 
-    public StudentUser(UserId studentUserId, String password) {
-        super(studentUserId, password);
+    public StudentUser(String username, String password, Student studentUser) {
+        super(username, password);
+        this.studentUser = studentUser;
     }
 
     public Student getStudentUser() {

@@ -6,7 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LecturerUserRepository extends JpaRepository<LecturerUser, Integer> {
-    LecturerUser findByUserId_Username(String username);
+    LecturerUser findByUsername(String username);
 
-    LecturerUser findByUserId_User(int lecturerId);
+    LecturerUser findByLecturerUser_LecturerId(int lecturerId);
+
 }

@@ -3,28 +3,29 @@ package SpringCA.entities;
 import SpringCA.entities.CompositeId.UserId;
 
 import javax.persistence.EmbeddedId;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
 public class User {
-    @EmbeddedId
-    private UserId userId;
+    @Id
+    private String username;
 
     private String password;
 
     public User(){}
 
-    public User(UserId userId, String password) {
-        this.userId = userId;
+    public User(String username, String password) {
+        this.username = username;
         this.password = password;
     }
 
-    public UserId getUserId() {
-        return userId;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserId(UserId userId) {
-        this.userId = userId;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
