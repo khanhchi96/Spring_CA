@@ -5,7 +5,7 @@
     <title>ReactJS + Spring Data REST</title>
 </head>
 <body>
-<form th:action = "@{/admin/lecturer/save/{id}(id=${id})}"
+<form th:action = "@{/admin/lecturer/{page}/save/{id}(page = ${page}, id=${id})}"
       th:object="${lecturer}" method="post">
     <label for="firstName">First name: </label>
     <input type="text" th:field="*{firstName}" id="firstName"><br>
@@ -39,7 +39,7 @@
     <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 
     <label for="department">Degree </label>
-    <select th:field="*{department.departmentId}" id="department">
+    <select th:field="*{departmentLecturer.departmentId}" id="department">
         <option th:each="department: ${departments}" th:value=${department.departmentId} th:text=${department.departmentName}></option>
     </select>
 

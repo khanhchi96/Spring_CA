@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Spring Boot Security</title>
+</head>
+<body>
+<p th:text="${adminUser.adminUser.firstName}"></p>
+<a th:href="@{/admin/changePassword/{username}(username=${adminUser.username})}">Change password</a>
+
+<form method="post" th:action="@{/admin/profile/uploadFile}" enctype="multipart/form-data">
+    <form:label th:path = "file">Select a file to upload</form:label>
+    <input type="file" name="file">
+    <input type="submit" value="Submit">
+</form>
+
+<div th:if="${file} != null">
+    <table>
+        <tr>
+            <td>OriginalFileName:</td>
+            <td>[[${file.originalFilename}]]</td>
+        </tr>
+        <tr>
+            <td>Type:</td>
+            <td>[[${file.contentType}]]</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

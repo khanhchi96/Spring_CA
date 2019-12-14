@@ -23,4 +23,12 @@ public class AdminUser extends User implements Serializable{
     public String getRole(){
         return "ADMIN";
     }
+
+    public Admin getAdminUser() {
+        return adminUser;
+    }
+
+    public void setAdminUser(Admin adminUser) {
+        this.adminUser = adminUser;
+    }
 }

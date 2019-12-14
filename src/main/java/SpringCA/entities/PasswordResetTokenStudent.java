@@ -16,4 +16,12 @@ public class PasswordResetTokenStudent extends PasswordResetToken {
         super(token);
         this.studentUser = studentUser;
     }
+
+    public StudentUser getStudentUser() {
+        return studentUser;
+    }
+
+    public void setStudentUser(StudentUser studentUser) {
+        this.studentUser = studentUser;
+    }
 }

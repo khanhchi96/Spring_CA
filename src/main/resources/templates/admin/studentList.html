@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div th:switch="${students}">
+<div th:switch="${studentList}">
     <h2 th:case="null">No users yet!</h2>
     <div th:case="*">
         <h2>Users</h2>
@@ -27,7 +27,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="student : ${students}">
+            <tr th:each="student : ${studentList}">
                 <td th:if="${student.middleName} != null">
                     [[${student.lastName} + ' ' + ${student.middleName} + ' ' + ${student.firstName}]]
                 </td>
@@ -40,13 +40,25 @@
                 <td th:text="${student.semesterEnrolled.semesterLabel}"></td>
                 <td th:text="${student.level}"></td>
                 <td th:text="${student.status}"></td>
-                <td><a th:href="@{/admin/student/edit/{id}(id=${student.studentId})}">Edit</a></td>
-                <td><a th:href="@{/admin/student/delete/{id}(id=${student.studentId})}">Delete</a></td>
+                <td><a th:href="@{/admin/student/{page}/edit/{id}(page = ${page}, id=${student.studentId})}">Edit</a></td>
+                <td><a th:href="@{/admin/student/{page}/delete/{id}(page = ${page}, id=${student.studentId})}">Delete</a></td>
             </tr>
             </tbody>
         </table>
     </div>
     <p><a href="/admin/student/addStudent">Add a new user</a></p>
+</div>
+
+<div>
+    <div>
+        <nav>
+            <ul>
+                <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                    <a class="page-link" th:href="@{|/admin/student/list/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
 
 </body>

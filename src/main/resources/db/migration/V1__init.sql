@@ -123,6 +123,22 @@ student_username varchar(45) not null,
 primary key (id)
 );
 
+create table password_reset_token_lecturer(
+id integer not null auto_increment,
+token varchar(255) not null,
+expiry_date datetime,
+lecturer_username varchar(45) not null,
+primary key (id)
+);
+
+create table password_reset_token_admin(
+id integer not null auto_increment,
+token varchar(255) not null,
+expiry_date datetime,
+admin_username varchar(45) not null,
+primary key (id)
+);
+
 
 alter table admin_user add constraint FK6riv77k0nalyptrxhp08k4aw8 foreign key (admin_id) references admin (admin_id);
 
@@ -153,3 +169,7 @@ alter table student_course add constraint FKq7yw2wg9wlt2cnj480hcdn6dq foreign ke
 alter table student_user add constraint FKjeq26fngvtwig8bq45x3ix1wy foreign key (student_id) references student (student_id);
 
 alter table password_reset_token_student add constraint FKjeq26fngvuahg8bq45y3ix1iwe foreign key (student_username) references student_user(username);
+
+alter table password_reset_token_lecturer add constraint FKjeq26aghodjw8bq45y3ix1iwe foreign key (lecturer_username) references lecturer_user(username);
+
+alter table password_reset_token_admin add constraint FKjeq26pwubncxe8bq45y3ix1iwe foreign key (admin_username) references admin_user(username);

@@ -31,7 +31,7 @@
         <a></a>
     </div>
 
-    <div th:switch="${studentList}">
+    <div th:switch="${studentCourseList}">
         <h2 th:case="null">No student registering for this course!</h2>
         <div th:case="*">
         <table>
@@ -42,7 +42,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="student : ${studentList}">
+            <tr th:each="student : ${studentCourseList}">
                 <td th:if="${student.studentByCourse.middleName} != null">
                     [[${student.studentByCourse.lastName} + ' ' + ${student.studentByCourse.middleName} + ' ' + ${student.studentByCourse.firstName}]]
                 </td>
@@ -51,6 +51,19 @@
             </tr>
             </tbody>
         </table>
+        </div>
+
+        <div>
+            <div>
+                <nav>
+                    <ul>
+                        <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                            <a class="page-link"
+                               th:href="@{|/admin/course/detail/${course.courseId}/${semesterId}/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
     </div>

@@ -1,4 +1,4 @@
-package SpringCA.csvWriter;
+package SpringCA.csv;
 
 import SpringCA.Repository.LecturerCourseRepository;
 import SpringCA.Repository.StudentCourseRepository;

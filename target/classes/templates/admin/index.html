@@ -5,6 +5,10 @@
     <title>ReactJS + Spring Data REST</title>
 </head>
 <body>
+<p th:if="${adminUser.adminUser.middleName} != null">Welcome, <a th:href="@{/admin/profile}">[[${adminUser.adminUser.lastName}]]
+    [[${adminUser.adminUser.middleName}]] [[${adminUser.adminUser.firstName}]]</a></p>
+<p th:if="${adminUser.adminUser.middleName} == null">Welcome, <a>[[${adminUser.adminUser.lastName}]]
+    [[${adminUser.adminUser.firstName}]]</a></p>
 <a th:href="@{/admin/student/list}">Student list</a><br/>
 <a th:href="@{/admin/lecturer/list}">Lecturer list</a><br/>
 <a th:href="@{/admin/course/list}">Course list</a><br/>

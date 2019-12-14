@@ -1,9 +1,6 @@
 package SpringCA.entities;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -20,7 +17,6 @@ public class PasswordResetToken {
     private int id;
 
     private String token;
-
 
     private Date expiryDate;
 
