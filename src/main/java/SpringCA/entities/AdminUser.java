@@ -10,17 +10,25 @@ public class AdminUser extends User implements Serializable{
 
     @OneToOne
     @JoinColumn(name = "admin_id")
-    @MapsId("user")
     private Admin adminUser;
 
     public AdminUser(){}
 
-    public AdminUser(UserId studentUserId, String password) {
-        super(studentUserId, password);
+    public AdminUser(String username, String password, Admin adminUser) {
+        super(username, password);
+        this.adminUser = adminUser;
     }
 
     @Override
     public String getRole(){
         return "ADMIN";
+    }
+
+    public Admin getAdminUser() {
+        return adminUser;
+    }
+
+    public void setAdminUser(Admin adminUser) {
+        this.adminUser = adminUser;
     }
 }

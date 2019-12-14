@@ -1,5 +1,6 @@
 package SpringCA.Service;
 
+import SpringCA.entities.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
+import java.util.Locale;
 import java.util.Properties;
 
 @Component
@@ -38,18 +40,20 @@ public class EmailServiceImpl implements EmailService {
 //    @Autowired
 //    public JavaMailSender emailSender;
 
-    public void sendSimpleMessage(String to, String subject, String text) {
-        try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setTo(to);
-            message.setSubject(subject);
-            message.setText(text);
-
-            getJavaMailSender().send(message);
-        } catch (MailException exception) {
-            exception.printStackTrace();
-        }
+    public void sendSimpleMessage(String[] to, String subject, String text) {
+        new Thread(() -> {
+            try {
+                SimpleMailMessage message = new SimpleMailMessage();
+                message.setTo(to);
+                message.setSubject(subject);
+                message.setText(text);
+                getJavaMailSender().send(message);
+            } catch (MailException exception) {
+                exception.printStackTrace();
+            }
+        }).start();
     }
+
 
 //    @Override
 //    public void sendSimpleMessageUsingTemplate(String to,

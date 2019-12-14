@@ -11,7 +11,7 @@ public class UserId implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-    @Column(columnDefinition = "varchar(45)", insertable = false, updatable = false)
+    @Column(columnDefinition = "varchar(45)", insertable = false, updatable = false, name = "username")
     private String username;
 
     private int user;

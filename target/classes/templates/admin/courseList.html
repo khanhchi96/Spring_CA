@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<div th:switch="${courses}">
+<div th:switch="${courseList}">
     <h2 th:case="null">No courses yet!</h2>
     <div th:case="*">
         <h2>Users</h2>
@@ -23,20 +23,30 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="course : ${courses}">
+            <tr th:each="course : ${courseList}">
                 <td th:text="${course.courseCode}"></td>
                 <td th:text="${course.courseName}"></td>
                 <td th:text="${course.courseUnit}"></td>
                 <td th:text="${course.departmentCourse.departmentName}"></td>
                 <td><a th:href="@{/admin/course/detail/{id}(id=${course.courseId})}">Available semesters</a></td>
-                <td><a th:href="@{/admin/course/edit/{id}(id=${course.courseId})}">Edit</a></td>
-                <td><a th:href="@{/admin/course/delete/{id}(id=${course.courseId})}">Delete</a></td>
+                <td><a th:href="@{/admin/course/{page}/edit/{id}(page = ${page}, id=${course.courseId})}">Edit</a></td>
+                <td><a th:href="@{/admin/course/{page}/delete/{id}(id=${course.courseId}, page=${page})}">Delete</a></td>
             </tr>
             </tbody>
         </table>
     </div>
     <p><a href="/admin/course/addCourse">Add a new course</a></p>
 </div>
-
+<div>
+    <div>
+        <nav>
+            <ul>
+                <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                    <a class="page-link" th:href="@{|/admin/course/list/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
 </body>
 </html>

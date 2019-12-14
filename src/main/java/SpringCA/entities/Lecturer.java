@@ -46,4 +46,5 @@ public class Lecturer extends Person{
     public void setDepartmentLecturer(Department departmentLecturer) {
         this.departmentLecturer = departmentLecturer;
     }
+
 }

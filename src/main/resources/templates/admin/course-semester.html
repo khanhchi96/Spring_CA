@@ -12,7 +12,7 @@
     <p>Available semesters:</p>
 
     <a th:each="semester: ${courseSemesters}"
-       th:href="@{/admin/course/detail/{courseId}/{semesterId}(courseId=${course.courseId}, semesterId = ${semester.semesterId})}">
+       th:href="@{/admin/course/detail/{courseId}/{semesterId}/page/1(courseId=${course.courseId}, semesterId = ${semester.semesterId})}">
         [[${semester.semesterLabel}]]
     </a><br/>
 

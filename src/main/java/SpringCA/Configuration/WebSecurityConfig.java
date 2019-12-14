@@ -34,7 +34,6 @@ public class WebSecurityConfig {
     public class AdminSecurityConfig extends WebSecurityConfigurerAdapter {
 
         protected void configure(HttpSecurity http) throws Exception {
-
             http.antMatcher("/admin/**").authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN").and().formLogin()//
                     .loginProcessingUrl("/admin/j_spring_security_login")//
                     .loginPage("/login_admin")//

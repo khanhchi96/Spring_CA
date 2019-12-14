@@ -5,7 +5,7 @@
     <title>ReactJS + Spring Data REST</title>
 </head>
 <body>
-<form th:action = "@{/admin/course/save/{id}(id=${id})}"
+<form th:action = "@{/admin/course/{page}/save/{id}(page = ${page}, id=${id})}"
       th:object="${course}" method="post">
     <label for="courseCode">Course code: </label>
     <input type="text" th:field="*{courseCode}" id="courseCode"><br>

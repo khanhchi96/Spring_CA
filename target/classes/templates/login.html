@@ -1,32 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="https://www.thymeleaf.org">-->
-<!--<head lang="en">-->
-<!--    <meta charset="UTF-8"/>-->
-<!--    <title>ReactJS + Spring Data REST</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<p>Login page</p>-->
-<!--<p th:text = "${id}"></p>-->
-<!--<form name="f" th:action="@{/login_admin}" method="POST">-->
-<!--&lt;!&ndash;    /{id}_login(id=${id})&ndash;&gt;-->
-<!--    <table>-->
-<!--        <tr>-->
-<!--            <td>User:</td>-->
-<!--            <td><input type="text" name="username" value=""></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td>Password:</td>-->
-<!--            <td><input type="password" name="password" /></td>-->
-<!--        </tr>-->
-<!--        <tr>-->
-<!--            <td><input name="submit" type="submit" value="submit" /></td>-->
-<!--        </tr>-->
-<!--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />-->
-<!--    </table>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -39,7 +10,8 @@
     <table>
         <tr>
             <td>Username:</td>
-            <td><input type='text' name='username' value=''></td>
+            <td><input type='text' name='username' value='' id="username"></td>
+            <p id="error"></p>
         </tr>
         <tr>
             <td>Password:</td>
@@ -51,5 +23,23 @@
     </table>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 </form>
+<a href="javascript:void(0)" id = "reset" onclick="reset()">reset</a>
 </body>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+
+    function reset(e){
+        var url = window.location.href;
+        var n = url.indexOf("login_");
+        var id = url.substr(n+6);
+       if($("#username").val() == "")
+           $("#error").text("Username is not valid. You have to key in your right username first.")
+       else {
+           window.location.href = "resetPassword/" + id + "/" + $("#username").val();
+       }
+   }
+
+
+</script>
 </html>

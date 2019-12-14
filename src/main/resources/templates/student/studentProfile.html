@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Spring Boot Security</title>
+</head>
+<body>
+<p th:text="${student.firstName}"></p>
+<a th:href="@{/student/changePassword/{username}(username=${studentUser.username})}">Change password</a>
+
+<a th:href="@{/student/edit/}+${student.studentId}"> Edit Contact Information </a>
+
+<span th:text="${student.lastName}">StduentLastName</span>
+<span th:text="${student.firstName}">StduentFirstName</span>
+<span th:text="${student.middleName}">StduentMiddleName</span>
+</p>
+<p th:text="${student.gender}">Gender</p>
+<p th:text="${student.birthDate}">Birth Date</p>
+<p th:text="${student.email}">Email</p>
+<p th:text="${student.mobile}">Mobile</p>
+<p th:text="${student.address}">Address</p>
+<p th:text="${student.status}">Status</p>
+<p th:text="${student.level}">Level</p>
+<p th:text="${student.semesterEnrolled.semesterLabel}">semester</p>
+<p th:text="${student.GPA}">GPA</p>
+<p th:text="${student.degree.degreeLabel}">Degree</p>
+</body>
+</html>

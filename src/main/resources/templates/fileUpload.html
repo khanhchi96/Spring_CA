@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:action="@{/admin/profile/uploadFile}" enctype="multipart/form-data">
+    <form:label th:path = "file">Select a file to upload</form:label>
+    <input type="file" name="file">
+    <input type="submit" value="Submit">
+</form>
+</body>
+</html>

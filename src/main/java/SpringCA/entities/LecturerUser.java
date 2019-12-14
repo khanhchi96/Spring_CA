@@ -10,13 +10,13 @@ public class LecturerUser extends User implements Serializable{
 
     @OneToOne
     @JoinColumn(name = "lecturer_id")
-    @MapsId("user")
     private Lecturer lecturerUser;
 
     public LecturerUser(){}
 
-    public LecturerUser(UserId studentUserId, String password) {
-        super(studentUserId, password);
+    public LecturerUser(String username, String password, Lecturer lecturerUser) {
+        super(username, password);
+        this.lecturerUser = lecturerUser;
     }
 
     public Lecturer getLecturerUser() {
