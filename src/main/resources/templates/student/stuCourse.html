@@ -7,7 +7,7 @@
 </head>
 <body>
 <h1>Enrolled Courses</h1>
-<a href="Navigate.html" th:href="@{/student/navigate}">Navigate</a>
+<a th:href="@{/student/student}">Navigate</a>
 	<table >
 		<tr th:each="stuCourse:${courseEnrolled}">
 			<td th:text=${stuCourse.courseByStudent.courseCode}>Course Code</td>

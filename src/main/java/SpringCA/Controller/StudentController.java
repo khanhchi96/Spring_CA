@@ -84,7 +84,7 @@ public class StudentController {
 	public String updateInfo(@ModelAttribute("student") Student student, BindingResult bindingResult, Model model) {
 		Student updateStu = studentServiceImpl.updateStudent(student.getStudentId(), student);
 		model.addAttribute("student", updateStu);
-		return "student/stuInfo";
+		return "redirect:/student/profile";
 	}
 
 	@GetMapping("/courseEnrolled/{studentId}")
