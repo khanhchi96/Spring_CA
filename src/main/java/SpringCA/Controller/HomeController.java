@@ -5,6 +5,8 @@ import SpringCA.Repository.LecturerUserRepository;
 import SpringCA.Repository.StudentUserRepository;
 import SpringCA.Service.UserService;
 import SpringCA.entities.AdminUser;
+import SpringCA.entities.LecturerUser;
+import SpringCA.entities.StudentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -76,13 +78,17 @@ public class HomeController {
     }
 
     @RequestMapping("/lecturer/lecturer")
-    public String lecturer() {
-        return "lecturer";
+    public String lecturer(Model model) {
+        LecturerUser lecturerUser = lecturerUserRepository.findByUsername(userService.getUsername());
+        model.addAttribute("lecturerUser", lecturerUser);
+        return "lecturer/index";
     }
 
     @RequestMapping("/student/student")
-    public String user() {
-        return "student";
+    public String user(Model model) {
+        StudentUser studentUser = studentUserRepository.findByUsername(userService.getUsername());
+        model.addAttribute("studentUser", studentUser);
+        return "student/index";
     }
 
     @RequestMapping("/403")

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>ReactJS + Spring Data REST</title>
+</head>
+<body>
+<p th:if="${studentUser.studentUser.middleName} != null">Welcome, <a th:href="@{/student/profile}">[[${studentUser.studentUser.lastName}]]
+    [[${studentUser.studentUser.middleName}]] [[${studentUser.studentUser.firstName}]]</a></p>
+<p th:if="${studentUser.studentUser.middleName} == null">Welcome, <a>[[${studentUser.studentUser.lastName}]]
+    [[${studentUser.studentUser.firstName}]]</a></p>
+
+<a href="CourseEnrolledList.html"
+   th:href="@{/student/courseEnrolled/}+${studentUser.studentUser.studentId}"> Course Enrolled</a>
+
+<br />
+
+<a href="courseScore.html"
+   th:href="@{/student/courseScore/}+${studentUser.studentUser.studentId}"> Course Score</a>
+
+<br />
+
+
+<form th:action="@{/student/j_spring_security_logout}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <input type="submit" value="Logout" />
+</form>
+</body>
+</html>
