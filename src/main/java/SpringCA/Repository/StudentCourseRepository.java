@@ -1,12 +1,13 @@
 package SpringCA.Repository;
 
+import SpringCA.entities.CompositeId.StudentCourseId;
 import SpringCA.entities.StudentCourse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StudentCourseRepository extends JpaRepository<StudentCourse, Integer> {
+public interface StudentCourseRepository extends JpaRepository<StudentCourse, StudentCourseId> {
     Iterable<StudentCourse> findByCourseByStudent_CourseId(int courseId);
 
     Page<StudentCourse> findByCourseByStudent_CourseIdAndSemesterStudentCourse_SemesterIdAndStatus(

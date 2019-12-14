@@ -1,6 +1,9 @@
 package SpringCA.Repository;
 
+import SpringCA.entities.Lecturer;
 import SpringCA.entities.LecturerCourse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +16,6 @@ public interface LecturerCourseRepository extends JpaRepository<LecturerCourse, 
     Iterable<LecturerCourse> findByCourseByLecturer_CourseIdAndSemesterLecturerCourse_SemesterId(int courseId, int SemesterId);
 
     Set<LecturerCourse> findByLecturerByCourse_LecturerId(int lecturerId);
+
+    Page<LecturerCourse> findAllByLecturerByCourse(Lecturer lec, Pageable pageable);
 }
