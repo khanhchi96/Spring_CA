@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>ReactJS + Spring Data REST</title>
+</head>
+<body>
+    <div>
+        <p th:if="${lecturer.middleName} != null">
+            [[${lecturer.lastName} + ' ' + ${lecturer.middleName} + ' ' + ${lecturer.firstName}]]
+        </p>
+        <p th:if="${lecturer.middleName} == null">[[${lecturer.lastName} + ' ' + ${lecturer.firstName}]]</p>
+        <p> Gender: [[${lecturer.gender}}]]</p>
+        <p> Birthdate: [[${#dates.format(lecturer.birthDate, 'dd-MM-yyyy')}]]</p>
+        <p> Mobile phone: [[${lecturer.mobile}]]</p>
+        <p> Email: [[${lecturer.email}]]</p>
+        <p> Address: [[${lecturer.address}]]</p>
+        <p> Department: [[${lecturer.departmentLecturer.departmentName}]]</p>
+        <p> List of courses:</p>
+        <div>
+            <p th:each="course: ${coursesByLecturer}">[[${course.courseName}]]</p>
+        </div>
+
+        <p><a th:href="@{/admin/lecturer/edit/{id}(id=${lecturer.lecturerId})}">Edit</a></p>
+        <p><a th:href="@{/admin/lecturer/delete/{id}(id=${lecturer.lecturerId})}">Delete</a></p>
+    </div>
+</body>
+</html>
