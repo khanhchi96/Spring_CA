@@ -17,7 +17,7 @@
 <br />
 
 
-<form th:action="@{/student/j_spring_security_logout}" method="post">
+<form th:action="@{/lecturer/j_spring_security_logout}" method="post">
     <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
     <input type="submit" value="Logout" />
 </form>

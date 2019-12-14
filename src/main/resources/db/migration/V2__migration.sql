@@ -35,12 +35,12 @@ insert into student_course(course_id, semester_id, student_id, score, status) va
 (5, 5, 5, 0.0, 'Approved'), (5, 5, 6, 0.0, 'Approved'), (5, 5, 7, 0.0, 'Approved');
 
 insert into lecturer(first_name, middle_name, last_name, gender, birth_date, email, mobile, department_id)
-values('Esther', '', 'Tan', 'Female', '1982-07-12', 'esthertan@nus.edu.sg', '89217764', 1),
-('Kwan', 'Yuen', 'Chia', 'Male', '1962-07-12', 'chiayuenkwan@nus.edu.sg', '89838764', 1),
-('Wah', 'Cher', 'Tan', 'Male', '1982-03-12', 'tancherwah@nus.edu.sg', '73678489', 1),
-('Tin', 'Tri', 'Nguyen', 'Male', '1988-06-19', 'nguyentritin@nus.edu.sg', '93277643', 1),
-('Kee', 'Boon', 'Lee', 'Male', '1972-04-16', 'leeboonkee@nus.edu.sg', '87485376', 1),
-('Fecilitas', '', 'Seah', 'Fale', '1972-04-23', 'felicitas@nus.edu.sg', '32766747', 1);
+values('Esther', '', 'Tan', 'Female', '1982-07-12', 'esthertan@gmail.com', '89217764', 1),
+('Kwan', 'Yuen', 'Chia', 'Male', '1962-07-12', 'chiayuenkwan@gmail.com', '89838764', 1),
+('Wah', 'Cher', 'Tan', 'Male', '1982-03-12', 'tancherwah@gmail.com', '73678489', 1),
+('Tin', 'Tri', 'Nguyen', 'Male', '1988-06-19', 'nguyentritin@gmail.com', '93277643', 1),
+('Kee', 'Boon', 'Lee', 'Male', '1972-04-16', 'leeboonkee@gmail.com', '87485376', 1),
+('Fecilitas', '', 'Seah', 'Fale', '1972-04-23', 'felicitas@gmail.com', '32766747', 1);
 
 insert into lecturer_course(course_id, lecturer_id, semester_id) values
 (1, 1, 5), (1, 2, 5), (2, 2, 5), (2, 3, 5), (2, 4, 5), (3, 5, 5), (3, 6, 5), (4, 2, 5), (4, 3, 5), (5, 3, 5), (5, 4, 5);
@@ -50,8 +50,8 @@ insert into lecturer_leave(lecturer_id, start_date, end_date, status) values
 (2, '2020-01-12', '2020-01-29', 'pending');
 
 insert into admin(first_name, middle_name, last_name, gender, birth_date, email, mobile) values
-('Lee', 'Chia', 'Tay', 'Female', '1990-12-01', 'taychialee@nus.edu.sg', '98387643'),
-('Megan', '', 'Wang', 'Female', '1986-11-12', 'meganwang@nus.edu.sg', '98737646');
+('Lee', 'Chia', 'Tay', 'Female', '1990-12-01', 'taychialee@gmail.com', '98387643'),
+('Megan', '', 'Wang', 'Female', '1986-11-12', 'meganwang@gmail.com', '98737646');
 
 insert into admin_user(admin_id, username, password) values
 (1, 'taychialee', '$2y$12$MXISci0nld0o6UBqSef0wOg1j137w7aMpI0QSdKry5ybiWneqy9aS'),

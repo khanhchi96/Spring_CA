@@ -1,16 +1,19 @@
 package SpringCA.Controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import SpringCA.Repository.*;
 import SpringCA.Service.UserService;
 import SpringCA.entities.*;
+import SpringCA.model.ResetPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -41,6 +44,35 @@ public class LecturerController {
 	private LecturerUserRepository lecturerUserRepository;
 
 	static final int size = 3;
+
+	@GetMapping(value = "/profile")
+	public String getProfile(Model model){
+		LecturerUser lecturerUser = lecturerUserRepository.findByUsername(userService.getUsername());
+		model.addAttribute("lecturerUser", lecturerUser);
+		model.addAttribute("lecturer", lecturerUser.getLecturerUser());
+		return "lecturer/lecturerProfile";
+	}
+
+	@GetMapping(value = "/changePassword/{username}")
+	public String changePassword(@PathVariable("username") String username, Model model, ResetPassword resetPassword){
+		model.addAttribute("username", username);
+		model.addAttribute("security", "lecturer");
+		return "resetPassword";
+	}
+
+	@PostMapping(value = "/changePassword/{username}")
+	public String resetPassword(@PathVariable("username") String username,
+								@Valid ResetPassword resetPassword,
+								BindingResult result, Model model){
+		if(result.hasErrors()){
+			model.addAttribute("username", username);
+			return "resetPassword";
+		}
+		userService.resetLecturerPassword(username, resetPassword.getPassword());
+		return "redirect:/lecturer/profile";
+	}
+
+
 	@GetMapping("/course/list/all")//view all lecturers and their assigned courses;
 	public String getLecturerCourse(@PageableDefault(size = size) Pageable pageable,Model model) {
 		Page<LecturerCourse> page=lecturerCourseRepository.findAll(pageable);
@@ -67,7 +99,7 @@ public class LecturerController {
 	@GetMapping("/course/student/{courseId}/{semId}")//view students in a course and particular semester;
 	public String getStudentCourseByCourseAndSemester(@PathVariable("courseId")int courseId,
 			@PathVariable("semId")int semId,
-			@PageableDefault(size=5) Pageable pageable,Model model) {
+			@PageableDefault(size=size) Pageable pageable,Model model) {
 		
 		Course course=courseRepository.findById(courseId).orElseThrow(
 				() -> new IllegalArgumentException("Course Id: " + courseId + " not found."));

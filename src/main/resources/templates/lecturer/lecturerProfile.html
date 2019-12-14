@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Spring Boot Security</title>
+</head>
+<body>
+<p th:text="${lecturerUser.lecturerUser.firstName}"></p>
+<a th:href="@{/lecturer/changePassword/{username}(username=${lecturerUser.username})}">Change password</a>
+
+
+</body>
+</html>
