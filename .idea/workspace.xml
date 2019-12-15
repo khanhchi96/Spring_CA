@@ -2,34 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="46a3db79-7fe9-46b3-b0ed-e370eb895aa6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/SpringCA/Repository/LecturerLeaveRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/lecturer/courseList.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerLeaveForm.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerLeaveList.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerPendingLeaves.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerRejectedLeaves.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/lecturer/studentByCourse.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SpringCA/Controller/LecturerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpringCA/Controller/LecturerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SpringCA/Repository/LecturerCourseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpringCA/Repository/LecturerCourseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SpringCA/Validation/FieldMatchValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpringCA/Validation/FieldMatchValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SpringCA/entities/CompositeId/LecturerLeaveId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpringCA/entities/CompositeId/LecturerLeaveId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SpringCA/entities/LecturerLeave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpringCA/entities/LecturerLeave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V2__migration.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V2__migration.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/lecturer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/lecturer/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerCourseList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/lecturer/studentCourseList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/lecturer/updateScore.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/lecturer/updateScore.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SpringCA/Controller/LecturerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpringCA/Controller/LecturerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SpringCA/Repository/LecturerCourseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpringCA/Repository/LecturerCourseRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SpringCA/Validation/FieldMatchValidator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpringCA/Validation/FieldMatchValidator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SpringCA/entities/CompositeId/LecturerLeaveId.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpringCA/entities/CompositeId/LecturerLeaveId.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/SpringCA/entities/LecturerLeave.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpringCA/entities/LecturerLeave.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/db/migration/V2__migration.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/migration/V2__migration.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/lecturer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/lecturer/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/lecturer/lecturerCourseList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/lecturer/studentCourseList.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/lecturer/updateScore.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/lecturer/updateScore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SpringCA/Controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpringCA/Controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SpringCA/Controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpringCA/Controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SpringCA/Service/AdminServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpringCA/Service/AdminServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SpringCA/entities/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SpringCA/entities/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__init.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/lecturerList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/lecturerList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/studentList.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin/studentList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SpringCA/entities/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SpringCA/entities/Student.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/db/migration/V1__init.sql" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/db/migration/V1__init.sql" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,37 +27,61 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerLeaveForm.html">
+        <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Controller/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
+            <state relative-caret-position="306">
+              <caret line="311" column="9" lean-forward="true" selection-start-line="311" selection-start-column="9" selection-end-line="311" selection-end-column="9" />
+              <folding>
+                <element signature="e#4115#4116#0" expanded="true" />
+                <element signature="e#4199#4200#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Controller/StudentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="124" column="4" lean-forward="true" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/src.zip!/java/util/Date.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/lecturerList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="975" column="15" selection-start-line="975" selection-start-column="15" selection-end-line="975" selection-end-column="15" />
+            <state relative-caret-position="-178">
+              <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerLeaveList.html">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/courseList.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="71" column="83" lean-forward="true" selection-start-line="71" selection-start-column="83" selection-end-line="71" selection-end-column="83" />
+            <state relative-caret-position="413">
+              <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/index.html">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/lecturerForm.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Service/AdminServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
+            <state relative-caret-position="303">
+              <caret line="92" column="5" lean-forward="true" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,66 +89,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerRejectedLeaves.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+            <state relative-caret-position="360">
+              <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/entities/LecturerLeave.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/studentForm.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-192">
-              <caret line="21" column="50" lean-forward="true" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="50" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Controller/LecturerController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="245" column="32" selection-start-line="245" selection-start-column="32" selection-end-line="245" selection-end-column="32" />
+            <state relative-caret-position="240">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Repository/LecturerLeaveRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="100" selection-start-line="9" selection-start-column="100" selection-end-line="9" selection-end-column="100" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/student/rejectedCourse.html">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/entities/CompositeId/LecturerLeaveId.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
-              <folding>
-                <element signature="e#804#805#0" expanded="true" />
-                <element signature="e#852#853#0" expanded="true" />
-                <element signature="e#894#895#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerPendingLeaves.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="74" column="81" lean-forward="true" selection-end-line="87" selection-end-column="7" />
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/student/pendingCourse.html">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -162,21 +131,16 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/SpringCA/Controller/UploadController.java" />
         <option value="$PROJECT_DIR$/src/main/java/SpringCA/Service/FileSystemStorageService.java" />
         <option value="$PROJECT_DIR$/src/main/java/SpringCA/Repository/StudentRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/SpringCA/entities/Semester.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/db/migration/V1__init.sql" />
         <option value="$PROJECT_DIR$/src/main/java/SpringCA/entities/StudentCourse.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/student/availableCourse.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/student/pendingCourse.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/student/rejectCourse.html" />
         <option value="$PROJECT_DIR$/src/main/java/SpringCA/Repository/CourseRepository.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/student/rejectedCourse.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/student/index.html" />
         <option value="$PROJECT_DIR$/src/main/java/SpringCA/Controller/HomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/SpringCA/Controller/StudentController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/SpringCA/Service/AdminServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/SpringCA/Service/AdminService.java" />
         <option value="$PROJECT_DIR$/src/main/java/SpringCA/Service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/SpringCA/Service/UserServiceImpl.java" />
@@ -189,10 +153,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/studentDetail.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/lecturerDetail.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/courseRegistrationReview.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/admin/studentList.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/admin/lecturerList.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/courseList.html" />
-        <option value="$PROJECT_DIR$/src/main/java/SpringCA/Controller/AdminController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/admin/index.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerCourseList.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/lecturer/studentCourseList.html" />
@@ -213,6 +174,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerRejectedLeaves.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerLeaveList.html" />
         <option value="$PROJECT_DIR$/src/main/java/SpringCA/Controller/LecturerController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/db/migration/V1__init.sql" />
+        <option value="$PROJECT_DIR$/src/main/java/SpringCA/entities/Student.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/student/availableCourse.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/admin/studentList.html" />
+        <option value="$PROJECT_DIR$/src/main/java/SpringCA/Service/AdminServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/admin/lecturerList.html" />
+        <option value="$PROJECT_DIR$/src/main/java/SpringCA/Controller/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/SpringCA/Controller/StudentController.java" />
       </list>
     </option>
   </component>
@@ -389,6 +358,15 @@
             <path>
               <item name="SpringCA" type="b2602c69:ProjectViewProjectNode" />
               <item name="SpringCA" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="student" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SpringCA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SpringCA" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -468,17 +446,18 @@
       <option name="presentableId" value="Default" />
       <updated>1576373851917</updated>
       <workItem from="1576373867885" duration="235000" />
+      <workItem from="1576397463500" duration="1484000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46591000" />
+    <option name="totallyTimeSpent" value="51680000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="814" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2639485" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26752505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -513,7 +492,7 @@
       <window_info anchor="right" id="Bean Validation" order="9" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2639485" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26752505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -523,7 +502,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32825485" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.32825485" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.32825485" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39889196" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -564,76 +543,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Configuration/Configuration.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Configuration/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Validation/ContactNumberValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/courseSemesterForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/course-semester.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/adminProfile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Service/AdminServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.2.1.RELEASE/spring-data-commons-2.2.1.RELEASE.jar!/org/springframework/data/domain/Page.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/studentDetail.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
           <caret line="33" column="13" selection-start-line="22" selection-start-column="8" selection-end-line="33" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/lecturerList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1605">
-          <caret line="107" column="6" selection-start-line="107" selection-start-column="6" selection-end-line="107" selection-end-column="6" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/courseList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -665,13 +578,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Controller/StudentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="47" selection-start-line="43" selection-start-column="4" selection-end-line="47" />
         </state>
       </provider>
     </entry>
@@ -713,20 +619,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/studentCourseList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-134">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerCourseList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/studentCourseList.html" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerCourseList.html" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fileUpload.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -744,16 +638,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Validation/DateValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="16" column="15" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Validation/DateValidator.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Validation/FieldMatchConstraint.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -761,16 +646,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Validation/DateConstraint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="21" column="17" lean-forward="true" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Validation/DateConstraint.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Validation/EmailValidator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -782,13 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="40" column="5" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="40" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/studentList.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-648">
-          <caret line="9" column="7" selection-end-line="119" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -810,27 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="488">
           <caret line="34" column="75" selection-start-line="34" selection-start-column="75" selection-end-line="34" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1632">
-          <caret line="406" column="36" lean-forward="true" selection-start-line="398" selection-start-column="8" selection-end-line="406" selection-end-column="36" />
-          <folding>
-            <element signature="e#4115#4116#0" expanded="true" />
-            <element signature="e#4199#4200#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__init.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/studentForm.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
@@ -901,13 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerRejectedLeaves.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="68" column="20" lean-forward="true" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerLeaveList.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -927,8 +768,125 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Controller/LecturerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="245" column="32" selection-start-line="245" selection-start-column="32" selection-end-line="245" selection-end-column="32" />
+        <state relative-caret-position="1110">
+          <caret line="103" column="5" lean-forward="true" selection-start-line="103" selection-start-column="5" selection-end-line="103" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db/migration/V1__init.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="97" column="10" lean-forward="true" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/entities/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2295#2296#0" expanded="true" />
+            <element signature="e#2326#2327#0" expanded="true" />
+            <element signature="e#2371#2372#0" expanded="true" />
+            <element signature="e#2411#2412#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/student/availableCourse.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Repository/CourseRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="12" column="115" selection-start-line="10" selection-start-column="20" selection-end-line="12" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/entities/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/student/rejectedCourse.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/student/pendingCourse.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/studentList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="61" column="22" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/lecturer/lecturerRejectedLeaves.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="68" column="20" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/studentForm.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Service/AdminServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="92" column="5" lean-forward="true" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/lecturerList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-178">
+          <caret line="60" column="46" selection-start-line="60" selection-start-column="46" selection-end-line="60" selection-end-column="46" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/courseList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="413">
+          <caret line="63" column="8" selection-start-line="63" selection-start-column="8" selection-end-line="63" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/admin/lecturerForm.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="311" column="9" lean-forward="true" selection-start-line="311" selection-start-column="9" selection-end-line="311" selection-end-column="9" />
+          <folding>
+            <element signature="e#4115#4116#0" expanded="true" />
+            <element signature="e#4199#4200#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/SpringCA/Controller/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="124" column="4" lean-forward="true" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
         </state>
       </provider>
     </entry>

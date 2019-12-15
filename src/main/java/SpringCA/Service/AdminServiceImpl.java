@@ -92,4 +92,8 @@ public class AdminServiceImpl implements AdminService {
         return semesters;
     }
 
+    public long getLastPage(long count, int size){
+        if(count % size == 0) return count/size;
+        else return ((long) Math.floor(count/size) + 1);
+    }
 }

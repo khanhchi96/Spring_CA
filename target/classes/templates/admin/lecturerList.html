@@ -58,7 +58,7 @@
 
 <div th:insert="~{admin/index :: adminheader}"></div>
 <div class="add_lecturer">
-    <a href="/admin/lecturer/addLecturer" >Add a new Lecturer</a>
+    <a th:href="@{/admin/lecturer/addLecturer}" >Add a new Lecturer</a>
 </div>
 <div th:switch="${lecturerList}">
     <h2 th:case="null">No lecturers yet!</h2>

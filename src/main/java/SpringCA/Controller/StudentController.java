@@ -112,6 +112,7 @@ public class StudentController {
 	@GetMapping("/courseScore")
 	public String listCourseScores( Model model) {
 		int studentId = getStudentUser().getStudentUser().getStudentId();
+
 		Student student = studentRepository.findById(studentId)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + studentId));
 		Iterable<StudentCourse> studentCourses = studentCourseRepository.findByStudentByCourse_StudentId(studentId);

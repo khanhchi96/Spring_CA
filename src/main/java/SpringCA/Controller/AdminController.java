@@ -252,18 +252,21 @@ public class AdminController {
     @GetMapping("/student/addStudent")
     public String addStudent(Student student, Model model) {
         model.addAttribute("id", 0);
+        model.addAttribute("page", adminService.getLastPage(studentRepository.count() + 1, size));
         return "admin/studentForm";
     }
 
     @GetMapping("/course/addCourse")
     public String addCourse(Course course, Model model) {
         model.addAttribute("id", 0);
+        model.addAttribute("page", adminService.getLastPage(courseRepository.count() + 1, size));
         return "admin/courseForm";
     }
 
-    @GetMapping("/student/addLecturer")
+    @GetMapping("/lecturer/addLecturer")
     public String addLecturer(Lecturer lecturer, Model model) {
         model.addAttribute("id", 0);
+        model.addAttribute("page", adminService.getLastPage(lecturerRepository.count() + 1, size));
         return "admin/lecturerForm";
     }
 
