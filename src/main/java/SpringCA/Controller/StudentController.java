@@ -123,9 +123,9 @@ public class StudentController {
 		semesters = semesters.stream().distinct().collect(Collectors.toList());
 		Map<Semester, List<StudentCourse>> semCourseMap = new HashMap<Semester, List<StudentCourse>>();
 		for (Semester semester : semesters) {
-			Iterable<StudentCourse> studentCoursesBySemester = studentCourseRepository.findByCourseByStudent_CourseIdAndSemesterStudentCourse_SemesterIdAndStatus(
-					studentId, semester.getSemesterId(), "Approved"
-			);
+			Iterable<StudentCourse> studentCoursesBySemester =
+					studentCourseRepository.findByStudentByCourse_StudentIdAndSemesterStudentCourse_SemesterIdAndStatus(
+					studentId, semester.getSemesterId(), "Approved");
 			semCourseMap.put(semester, (List<StudentCourse>) studentCoursesBySemester);
 		}
 		model.addAttribute("student", student);

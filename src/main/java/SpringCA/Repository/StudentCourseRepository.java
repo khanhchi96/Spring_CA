@@ -12,6 +12,9 @@ import java.util.List;
 public interface StudentCourseRepository extends JpaRepository<StudentCourse, StudentCourseId> {
     Iterable<StudentCourse> findByCourseByStudent_CourseId(int courseId);
 
+    Iterable<StudentCourse> findByStudentByCourse_StudentIdAndSemesterStudentCourse_SemesterIdAndStatus(
+            int studentId, int semesterId, String status);
+
     Page<StudentCourse> findByCourseByStudent_CourseIdAndSemesterStudentCourse_SemesterIdAndStatus(
             int courseId, int semesterId, String status, Pageable pageable);
 
@@ -25,5 +28,6 @@ public interface StudentCourseRepository extends JpaRepository<StudentCourse, St
     Page<StudentCourse> findBySemesterStudentCourse_SemesterIdAndStatus(int semesterId, String status, Pageable pageable);
 
     List<StudentCourse> findBySemesterStudentCourse_SemesterIdAndStatus(int semesterId, String status);
+
 
 }
