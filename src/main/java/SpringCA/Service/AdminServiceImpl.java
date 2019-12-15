@@ -1,11 +1,15 @@
 package SpringCA.Service;
 
 import SpringCA.Repository.*;
+import SpringCA.entities.CompositeId.LecturerLeaveId;
 import SpringCA.entities.CompositeId.StudentCourseId;
 import SpringCA.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,18 +23,22 @@ public class AdminServiceImpl implements AdminService {
     private LecturerCourseRepository lecturerCourseRepository;
     private LecturerRepository lecturerRepository;
     private LecturerUserRepository lecturerUserRepository;
+    private LecturerLeaveRepository lecturerLeaveRepository;
 
     @Autowired
     public AdminServiceImpl(StudentCourseRepository studentCourseRepository, LecturerRepository lecturerRepository,
                             StudentRepository studentRepository, LecturerCourseRepository lecturerCourseRepository,
                             EmailServiceImpl emailService, StudentUserRepository studentUserRepository,
-                            CourseRepository courseRepository, LecturerUserRepository lecturerUserRepository) {
+                            CourseRepository courseRepository, LecturerUserRepository lecturerUserRepository,
+                            LecturerLeaveRepository lecturerLeaveRepository) {
         this.studentCourseRepository = studentCourseRepository;
         this.studentRepository = studentRepository;
         this.emailService = emailService;
         this.courseRepository = courseRepository;
         this.studentUserRepository = studentUserRepository;
         this.lecturerCourseRepository = lecturerCourseRepository;
+        this.lecturerRepository = lecturerRepository;
+        this.lecturerLeaveRepository = lecturerLeaveRepository;
     }
 
     public void reviewCourse(int studentId, int semesterId, int courseId, String action) {
@@ -52,6 +60,32 @@ public class AdminServiceImpl implements AdminService {
                 " - " + course.getCourseName() + " has been " + studentCourse.getStatus().toLowerCase()
                 + ". You can view the result via this link: " + url + ".\nThank you!\nXoxo,\nGossip girl";
         emailService.sendSimpleMessage(new String[]{student.getEmail()}, mailSubject, text);
+    }
+
+    public void reviewLeave(int lecturerId, Date date, String action) throws ParseException {
+        SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
+        LecturerLeaveId lecturerLeaveId = new LecturerLeaveId(lecturerId, date);
+        LecturerLeave lecturerLeave = lecturerLeaveRepository.findById(lecturerLeaveId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid"));
+        String url = "http://localhost:8080/lecturer/leave/";
+        if(action.equals("approve")){
+            lecturerLeave.setStatus("Approved");
+            url += "list";
+        }
+        if(action.equals("reject")){
+            lecturerLeave.setStatus("Rejected");
+            url += "rejected/list";
+        }
+        lecturerLeaveRepository.save(lecturerLeave);
+        Lecturer lecturer = lecturerRepository.findById(lecturerId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid lecturer Id" + lecturerId));
+        String mailSubject = "LECTURER LEAVE REQUEST REVIEW - " + lecturer.toString().toUpperCase();
+        String text = "Dear " + lecturer.toString().toUpperCase() + ",\nYour request for leave from " +
+                formatter2.format(lecturerLeave.getStartDate()) + " to " +
+                formatter2.format(lecturerLeave.getEndDate()) + " have been "+
+                lecturerLeave.getStatus().toLowerCase() +". You can view the result via this link: " + url +
+                "\nThank you!\nXoxo,\nGossip girl";
+        emailService.sendSimpleMessage(new String[]{lecturer.getEmail()}, mailSubject, text);
     }
 
     public void deleteStudent(int id) {

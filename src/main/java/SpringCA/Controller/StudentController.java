@@ -115,18 +115,19 @@ public class StudentController {
 
 		Student student = studentRepository.findById(studentId)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + studentId));
-		Iterable<StudentCourse> studentCourses = studentCourseRepository.findByStudentByCourse_StudentId(studentId);
+		Iterable<StudentCourse> studentCourses =
+				studentCourseRepository.findByStudentByCourse_StudentIdAndStatus(studentId, "Approved");
 		List<Semester> semesters = new ArrayList<Semester>();
 		for (StudentCourse sc : studentCourses) {
 			semesters.add(sc.getSemesterStudentCourse());
 		}
 		semesters = semesters.stream().distinct().collect(Collectors.toList());
-		Map<Semester, List<StudentCourse>> semCourseMap = new HashMap<Semester, List<StudentCourse>>();
+		Map<Semester, Iterable<StudentCourse>> semCourseMap = new HashMap<Semester, Iterable<StudentCourse>>();
 		for (Semester semester : semesters) {
-			Iterable<StudentCourse> studentCoursesBySemester =
+			Iterable<StudentCourse> semestercourse =
 					studentCourseRepository.findByStudentByCourse_StudentIdAndSemesterStudentCourse_SemesterIdAndStatus(
 					studentId, semester.getSemesterId(), "Approved");
-			semCourseMap.put(semester, (List<StudentCourse>) studentCoursesBySemester);
+			semCourseMap.put(semester, semestercourse);
 		}
 		model.addAttribute("student", student);
 		model.addAttribute("semCourseMap", semCourseMap);
@@ -136,6 +137,9 @@ public class StudentController {
 	@GetMapping("/availableCourse")
 	public String listAvailableCourse(Model model){
 		Iterable<Course> availableCourses = courseRepository.getNotEnrolledCourse(getStudentUser().getStudentUser().getStudentId());
+		for(Course c: availableCourses){
+			System.out.println(c.getCourseName());
+		}
 		if(availableCourses != null) model.addAttribute("availableCourses", availableCourses);
 		return "student/availableCourse";
 	}

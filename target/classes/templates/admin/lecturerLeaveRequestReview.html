@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Spring Boot Security</title>
+</head>
+<body>
+<div th:switch="${pendingLeaveRequest}">
+    <h2 th:case="null">No pending leave request</h2>
+    <div th:case="*">
+        <table>
+            <tr>
+                <td>Lecturer name</td>
+                <td>Start date</td>
+                <td>End date</td>
+                <td>Approve</td>
+                <td>Reject</td>
+            </tr>
+            <tr th:each="leave: ${pendingLeaveRequest}">
+                <td>
+                    <a th:href="@{|/admin/lecturer/{leave.lecturerByLeave.lecturerId}|}" th:text="${leave.lecturerByLeave}"></a>
+                </td>
+                <td th:text="${#dates.format(leave.startDate, 'MM-dd-yyyy')}"></td>
+                <td th:text="${#dates.format(leave.endDate, 'MM-dd-yyyy')}"></td>
+                <td><a th:href="@{|/admin/leave/${page}/approve/${leave.lecturerByLeave.lecturerId}/${leave.startDate}|}">
+                    Approve</a></td>
+                <td><a th:href="@{|/admin/leave/${page}/reject/${leave.lecturerByLeave.lecturerId}/${leave.startDate}|}">
+                    Reject</a></td>
+            </tr>
+        </table>
+        <div>
+            <div>
+                <nav>
+                    <ul>
+                        <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                            <a class="page-link"
+                               th:href="@{|/admin/course/registration/review/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -237,6 +237,7 @@ public class LecturerController {
 		return "redirect:/lecturer/leave/pending/list";
 	}
 
+
 	@GetMapping("/leave/rejected/list")
 	public String getRejectedLeave(Model model) {
 		Iterable<LecturerLeave> lecturerRejectedLeaves =
