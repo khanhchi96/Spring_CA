@@ -10,11 +10,12 @@
 <p th:if="${lecturerUser.lecturerUser.middleName} == null">Welcome, <a>[[${lecturerUser.lecturerUser.lastName}]]
     [[${lecturerUser.lecturerUser.firstName}]]</a></p>
 
-<a th:href="@{/lecturer/course/list/all}">View all lecturers and courses</a><br/>
-
-<a th:href="@{/lecturer/course}">View assigned courses</a><br/>
-
+<a th:href="@{/lecturer/course/list/page/1}">View assigned courses</a><br/>
+<a th:href="@{/lecturer/leave/list}">View leaves</a><br/>
+<a th:href="@{/lecturer/leave/pending/list}">View pending leaves</a><br/>
+<a th:href="@{/lecturer/leave/rejected/list}">View rejected leaves</a><br/>
 <br />
+
 
 
 <form th:action="@{/lecturer/j_spring_security_logout}" method="post">

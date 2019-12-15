@@ -1,9 +1,12 @@
 package SpringCA.entities;
 
 import SpringCA.entities.CompositeId.LecturerLeaveId;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Entity
 @IdClass(LecturerLeaveId.class)
@@ -14,13 +17,22 @@ public class LecturerLeave {
     private Lecturer lecturerByLeave;
 
     @Id
-    private LocalDateTime startDate;
-    private LocalDateTime endDate;
+    @NotNull(message = "Start date cannot be empty")
+    @Future(message = "Start date must be an upcoming date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private Date startDate;
+
+
+    @NotNull(message = "End date cannot be empty")
+    @Future(message = "Start date must be an upcoming date")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private Date endDate;
+
     private String status;
 
     public LecturerLeave(){}
 
-    public LecturerLeave(Lecturer lecturerByLeave, LocalDateTime startDate, LocalDateTime endDate, String status) {
+    public LecturerLeave(Lecturer lecturerByLeave, Date startDate, Date endDate, String status) {
         this.lecturerByLeave = lecturerByLeave;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -35,19 +47,19 @@ public class LecturerLeave {
         this.lecturerByLeave = lecturerByLeave;
     }
 
-    public LocalDateTime getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDateTime endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 

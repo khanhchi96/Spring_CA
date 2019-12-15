@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
-<title>Edit Student Score</title>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en">
+	<meta charset="UTF-8"/>
+	<title>ReactJS + Spring Data REST</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<form action="#" th:action="@{/lecturer/update/score/{studentId}/{courseId}/{semId}
-	(studentId=${studentId},
-	courseId=${courseId},
-	semId=${semId})
-	}" th:object="${studentCourse}" method="post">
-	
+	<form action="#" th:action="@{|/lecturer/update/${page}/score|}"
+		  th:object="${studentCourse}" method="post">
+
 		<table>
 			<tr>
 				<td>Student Name</td>
@@ -19,20 +19,20 @@
 			</tr>
 			<tr>
 				<td>Course</td>
-				<td th:text="*{courseByStudent}" readonly="readonly"></td>
+				<td th:text="*{courseByStudent.courseName}" readonly="readonly"></td>
 			</tr>
 			<tr>
 				<td>Semester</td>
-				<td th:text="*{semesterStudentCourse}" readonly="readonly"></td>
-			</tr>		
+				<td th:text="*{semesterStudentCourse.semesterLabel}" readonly="readonly"></td>
+			</tr>
 			<tr>
 				<td>Score</td>
 				<td>
 						<input type="number" th:field="*{score}" min=0 max=5 step=0.01/>
-						
-						<input type=hidden th:field="${semId}"/>
-						<input type=hidden th:field="${studentId}"/>
-						<input type=hidden th:field="${courseId}"/>
+						<input type=hidden th:field="${studentCourse.semesterStudentCourse.semesterId}"/>
+						<input type=hidden th:field="${studentCourse.studentByCourse.studentId}"/>
+						<input type=hidden th:field="${studentCourse.courseByStudent.courseId}"/>
+						<input type=hidden th:field="${studentCourse.status}"/>
 				</td>
 			</tr>	
 			
@@ -41,7 +41,7 @@
             </tr>					
 		
 		</table>
-		
+
 		
 	</form>
 </body>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>ReactJS + Spring Data REST</title>
+</head>
+<body>
+<div th:switch="${msg}">
+    <p th:case="null"></p>
+    <p th:case="*" th:text="${msg}"></p>
+</div>
+<form th:action = "${date} == null ? @{/lecturer/leave/application/submit/new} : @{|/lecturer/leave/application/submit/${date}|}"
+      th:object="${lecturerLeave}" method="post">
+    <label for="startDate">Start date </label>
+    <input type="date" th:field="*{startDate}" id="startDate"><br>
+    <p th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"></p>
+
+    <label for="endDate">End date </label>
+    <input type="date" th:field="*{endDate}" id="endDate"><br>
+    <p th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"></p>
+    <input type="hidden" th:field="${lecturerLeave.lecturerByLeave.lecturerId}">
+
+    <input type="submit" value="Save">
+</form>
+
+</body>
+</html>

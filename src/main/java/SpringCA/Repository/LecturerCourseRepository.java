@@ -17,5 +17,5 @@ public interface LecturerCourseRepository extends JpaRepository<LecturerCourse, 
 
     Set<LecturerCourse> findByLecturerByCourse_LecturerId(int lecturerId);
 
-    Page<LecturerCourse> findAllByLecturerByCourse(Lecturer lec, Pageable pageable);
+    Page<LecturerCourse> findByLecturerByCourse_LecturerId(int lecturerId, Pageable pageable);
 }

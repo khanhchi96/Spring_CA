@@ -5,11 +5,14 @@ import javax.validation.Valid;
 import SpringCA.Repository.*;
 import SpringCA.Service.UserServiceImpl;
 import SpringCA.entities.*;
+import SpringCA.entities.CompositeId.LecturerLeaveId;
 import SpringCA.model.ResetPassword;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,34 +21,45 @@ import org.springframework.web.servlet.ModelAndView;
 
 import SpringCA.entities.CompositeId.StudentCourseId;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 @Controller
 @RequestMapping("/lecturer")
 public class LecturerController {
-	@Autowired
 	private LecturerCourseRepository lecturerCourseRepository;
-	
-	@Autowired
 	private LecturerRepository lecturerRepository;
-	
-	@Autowired 
 	private StudentCourseRepository studentCourseRepository;
-	
-	@Autowired 
-	private CourseRepository courseRepository;
-	
-	@Autowired 
-	private SemesterRepository semesterRepository;
-
-	@Autowired
 	private UserServiceImpl userService;
-
-	@Autowired
 	private LecturerUserRepository lecturerUserRepository;
+	private LecturerLeaveRepository lecturerLeaveRepository;
 
-	static final int size = 3;
+	public LecturerController(LecturerCourseRepository lecturerCourseRepository, LecturerRepository lecturerRepository,
+							  StudentCourseRepository studentCourseRepository, UserServiceImpl userService,
+							  LecturerUserRepository lecturerUserRepository, LecturerLeaveRepository lecturerLeaveRepository) {
+		this.lecturerCourseRepository = lecturerCourseRepository;
+		this.lecturerRepository = lecturerRepository;
+		this.studentCourseRepository = studentCourseRepository;
+		this.userService = userService;
+		this.lecturerUserRepository = lecturerUserRepository;
+		this.lecturerLeaveRepository = lecturerLeaveRepository;
+	}
+
+	private int size = 3;
+
+	@ModelAttribute("lecturerUser")
+	public LecturerUser getLecturerUser() {
+		return lecturerUserRepository.findByUsername(userService.getUsername());
+	}
 
 	@GetMapping(value = "/profile")
-	public String getProfile(Model model){
+	public String getProfile(Model model) {
 		LecturerUser lecturerUser = lecturerUserRepository.findByUsername(userService.getUsername());
 		model.addAttribute("lecturerUser", lecturerUser);
 		model.addAttribute("lecturer", lecturerUser.getLecturerUser());
@@ -53,7 +67,7 @@ public class LecturerController {
 	}
 
 	@GetMapping(value = "/changePassword/{username}")
-	public String changePassword(@PathVariable("username") String username, Model model, ResetPassword resetPassword){
+	public String changePassword(@PathVariable("username") String username, Model model, ResetPassword resetPassword) {
 		model.addAttribute("username", username);
 		model.addAttribute("security", "lecturer");
 		return "resetPassword";
@@ -62,8 +76,8 @@ public class LecturerController {
 	@PostMapping(value = "/changePassword/{username}")
 	public String resetPassword(@PathVariable("username") String username,
 								@Valid ResetPassword resetPassword,
-								BindingResult result, Model model){
-		if(result.hasErrors()){
+								BindingResult result, Model model) {
+		if (result.hasErrors()) {
 			model.addAttribute("username", username);
 			return "resetPassword";
 		}
@@ -72,78 +86,163 @@ public class LecturerController {
 	}
 
 
-	@GetMapping("/course/list/all")//view all lecturers and their assigned courses;
-	public String getLecturerCourse(@PageableDefault(size = size) Pageable pageable,Model model) {
-		Page<LecturerCourse> page=lecturerCourseRepository.findAll(pageable);
+	@GetMapping(value = "/course/list/page/{page}")
+	public String viewAllCourses(@PathVariable("page") int page, Model model) {
+		LecturerUser lecturerUser = lecturerUserRepository.findByUsername(userService.getUsername());
+		Pageable pageable = PageRequest.of(page - 1, size);
+		Page<LecturerCourse> lecturerCourses =
+				lecturerCourseRepository.findByLecturerByCourse_LecturerId(lecturerUser.getLecturerUser().getLecturerId(), pageable);
+		int totalCoursePages = lecturerCourses.getTotalPages();
+		model.addAttribute("courseList", lecturerCourses.getContent());
+
+		if (totalCoursePages > 0) {
+			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalCoursePages).boxed().collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
+			model.addAttribute("page", page);
+		}
+		return "lecturer/courseList";
+	}
+
+
+	@GetMapping("/course/student/{courseId}/{semesterId}/page/{page}")
+	public String viewStudentByCourse(@PathVariable("courseId") int courseId, @PathVariable("semesterId") int semesterId,
+									  @PathVariable("page") int page, Model model) {
+		Pageable pageable = PageRequest.of(page - 1, size);
+		Page<StudentCourse> studentByCourseList =
+				studentCourseRepository.findByCourseByStudent_CourseIdAndSemesterStudentCourse_SemesterIdAndStatus(
+						courseId, semesterId, "Approved", pageable);
+		int totalStudentByCoursePages = studentByCourseList.getTotalPages();
+		model.addAttribute("studentByCourseList", studentByCourseList.getContent());
+		model.addAttribute("courseId", courseId);
+		model.addAttribute("semesterId", semesterId);
+		if (totalStudentByCoursePages > 0) {
+			List<Integer> pageNumbers = IntStream.rangeClosed(1, totalStudentByCoursePages).boxed().collect(Collectors.toList());
+			model.addAttribute("pageNumbers", pageNumbers);
+			model.addAttribute("page", page);
+		}
+		return "lecturer/studentByCourse";
+	}
+
+	@GetMapping("/update/{page}/score/{studentId}/{courseId}/{semesterId}")
+	public String updateScore(@PathVariable("studentId") int studentId, @PathVariable("courseId") int courseId,
+							  @PathVariable("semesterId") int semesterId, @PathVariable("page") int page, Model model) {
+		StudentCourseId studentCourseId = new StudentCourseId(studentId, courseId, semesterId);
+		StudentCourse studentCourse = studentCourseRepository.findById(studentCourseId)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid id"));
 		model.addAttribute("page", page);
-		return "/lecturer/lecturerCourseList";
+		model.addAttribute("studentCourse", studentCourse);
+		return "lecturer/updateScore";
 	}
-	
-	@GetMapping("/course")
-	public String getLecturerCourseByLecturerId(@PageableDefault(size=size) Pageable pageable,
-			Model model) {
-		int lecturerId = lecturerUserRepository.findByUsername(userService.getUsername()).getLecturerUser().getLecturerId();
-		
-		Lecturer lec=lecturerRepository.findById(lecturerId).orElseThrow(
-				() -> new IllegalArgumentException("Lecturer Id: " + lecturerId + " not found."));
-		
-		Page<LecturerCourse> lectCourse=lecturerCourseRepository.findAllByLecturerByCourse(lec,pageable);
-		
-		//Page<LecturerCourse> page=new PageImpl<LecturerCourse>(lectCourse,pageable,0);
-		model.addAttribute("page", lectCourse);
-		//model.addAttribute("lecturerId",lecturerId);
-		return "/lecturer/lecturerCourseList";
+
+	@PostMapping("/update/{page}/score")
+	public String updateScore(@PathVariable("page") int page, @Valid StudentCourse studentCourse, BindingResult result, Model model) {
+		if (result.hasErrors()) {
+			model.addAttribute("page", page);
+			return "lecturer/updateScore";
+		}
+		studentCourseRepository.save(studentCourse);
+		return "redirect:/lecturer/course/student/" + studentCourse.getCourseByStudent().getCourseId() + "/"
+				+ studentCourse.getSemesterStudentCourse().getSemesterId() + "/page/" + page;
 	}
-	
-	@GetMapping("/course/student/{courseId}/{semId}")//view students in a course and particular semester;
-	public String getStudentCourseByCourseAndSemester(@PathVariable("courseId")int courseId,
-			@PathVariable("semId")int semId,
-			@PageableDefault(size=size) Pageable pageable,Model model) {
-		
-		Course course=courseRepository.findById(courseId).orElseThrow(
-				() -> new IllegalArgumentException("Course Id: " + courseId + " not found."));
-		
-		Semester sem=semesterRepository.findById(semId).orElseThrow(
-				() -> new IllegalArgumentException("Semester Id: " + semId + " not found."));
-		
-		Page<StudentCourse> studCourse=studentCourseRepository.findByCourseByStudent_CourseIdAndSemesterStudentCourse_SemesterIdAndStatus(
-				course.getCourseId(), sem.getSemesterId(), "Approved", pageable);
-		
-		model.addAttribute("page", studCourse);
-		model.addAttribute("courseId",courseId);
-		model.addAttribute("semId",semId);
-		
-		return "lecturer/studentCourseList";
+
+	@GetMapping("/leave/list")
+	public String getLecturerLeave(Model model) {
+		Iterable<LecturerLeave> lecturerLeaves =
+				lecturerLeaveRepository.findByLecturerByLeave_LecturerIdAndStatus(
+						getLecturerUser().getLecturerUser().getLecturerId(), "Approved");
+		model.addAttribute("lecturerLeaves", lecturerLeaves);
+		return "lecturer/lecturerLeaveList";
 	}
-	
-	@GetMapping("/course/student/score/{studentId}/{courseId}/{semId}")
-	public ModelAndView editStudentCourseScore(@PathVariable("studentId")int studentId,
-			@PathVariable("courseId")int courseId,
-			@PathVariable("semId")int semId) { //,Model model
-		ModelAndView mav=new ModelAndView("lecturer/updateScore");
-		StudentCourse studCourse=studentCourseRepository.findById(new StudentCourseId(studentId,courseId,semId)).get();
-		mav.addObject("studentCourse",studCourse);
-		
-		//mav.addObject("score",studCourse.getScore());
-		mav.addObject("studentId", studentId);
-		mav.addObject("courseId", courseId);
-		mav.addObject("semId", semId);
-		
-		return mav;
+
+	@GetMapping("/leave/application")
+	public String getLeaveApplicationForm(Model model, LecturerLeave lecturerLeave) {
+		lecturerLeave = new LecturerLeave();
+		LecturerUser lecturerUser = lecturerUserRepository.findByUsername(userService.getUsername());
+		Lecturer lecturer = lecturerRepository.findById(lecturerUser.getLecturerUser().getLecturerId())
+				.orElseThrow(() -> new IllegalArgumentException("Invalid id"));
+		lecturerLeave.setLecturerByLeave(lecturer);
+		model.addAttribute("lecturerLeave", lecturerLeave);
+		return "lecturer/lecturerLeaveForm";
 	}
-	
-	/*@ModelAttribute("studentCourse")StudentCourse studCourse*/
-	
-	@PostMapping("/update/score/{studentId}/{courseId}/{semId}")
-	public String updateStudentCourseScore(
-			@PathVariable("studentId")int studentId,
-			@PathVariable("courseId")int courseId,
-			@PathVariable("semId")int semId,@RequestParam("score")float score) {
-		
-		StudentCourse studCourse=studentCourseRepository.findById(new StudentCourseId(studentId,courseId,semId)).get();
-		studCourse.setScore(score);
-		studentCourseRepository.save(studCourse);
-		
-		return"redirect:/course/student/"+courseId+"/"+semId;
+
+	@PostMapping("/leave/application/submit/{date}")
+	public String submitLeaveApplication(@Valid LecturerLeave lecturerLeave, BindingResult result,
+										 @PathVariable("date") String date,
+										 Model model) throws ParseException {
+		if (result.hasErrors()) {
+			return "lecturer/lecturerLeaveForm";
+		}
+		if (lecturerLeave.getStartDate().compareTo(lecturerLeave.getEndDate()) >= 0) {
+			model.addAttribute("msg", "End date must be after start date");
+			return "lecturer/lecturerLeaveForm";
+		}
+
+		if (date.equals("new")) {
+			LecturerLeaveId newLeave = new LecturerLeaveId(getLecturerUser().getLecturerUser().getLecturerId(), lecturerLeave.getStartDate());
+			try {
+				LecturerLeave oldLeave = lecturerLeaveRepository.findById(newLeave)
+						.orElseThrow(() -> new IllegalArgumentException("Invalid"));
+				model.addAttribute("msg", "You have already applied for a leave started from this date." +
+						"Please go back to the pending list if you would like to edit the end date.");
+				return "lecturer/lecturerLeaveForm";
+			} catch (IllegalArgumentException e) {
+				//ignore
+			}
+		} else if (!date.equals("new")) {
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+			Date fDate = formatter.parse(date);
+			LecturerLeaveId lecturerLeaveId = new LecturerLeaveId(getLecturerUser().getLecturerUser().getLecturerId(), fDate);
+			try {
+				LecturerLeave oldLeave = lecturerLeaveRepository.findById(lecturerLeaveId)
+						.orElseThrow(() -> new IllegalArgumentException("Invalid"));
+				lecturerLeaveRepository.delete(oldLeave);
+			} catch (IllegalArgumentException e) {
+				//ignore
+			}
+		}
+		lecturerLeave.setStatus("Pending");
+		lecturerLeaveRepository.save(lecturerLeave);
+		return "redirect:/lecturer/leave/pending/list";
+	}
+
+	@GetMapping("/leave/pending/list")
+	public String getPendingLeave(Model model) {
+		Iterable<LecturerLeave> lecturerPendingLeaves =
+				lecturerLeaveRepository.findByLecturerByLeave_LecturerIdAndStatus(
+						getLecturerUser().getLecturerUser().getLecturerId(), "Pending");
+		model.addAttribute("lecturerPendingLeaves", lecturerPendingLeaves);
+		return "lecturer/lecturerPendingLeaves";
+	}
+
+	@GetMapping("/leave/pending/edit/{startDate}")
+	public String editPendingLeave(@PathVariable("startDate") String startDate, Model model) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+		Date date = formatter.parse(startDate);
+		LecturerLeaveId lecturerLeaveId = new LecturerLeaveId(getLecturerUser().getLecturerUser().getLecturerId(), date);
+		LecturerLeave lecturerLeave = lecturerLeaveRepository.findById(lecturerLeaveId)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid"));
+		model.addAttribute("lecturerLeave", lecturerLeave);
+		model.addAttribute("date", lecturerLeave.getStartDate());
+		return "lecturer/lecturerLeaveForm";
+	}
+
+	@GetMapping("/leave/pending/cancel/{startDate}")
+	public String cancelPendingLeave(@PathVariable("startDate") String startDate, Model model) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+		Date date = formatter.parse(startDate);
+		LecturerLeaveId lecturerLeaveId = new LecturerLeaveId(getLecturerUser().getLecturerUser().getLecturerId(), date);
+		LecturerLeave lecturerLeave = lecturerLeaveRepository.findById(lecturerLeaveId)
+				.orElseThrow(() -> new IllegalArgumentException("Invalid"));
+		lecturerLeaveRepository.delete(lecturerLeave);
+		return "redirect:/lecturer/leave/pending/list";
+	}
+
+	@GetMapping("/leave/rejected/list")
+	public String getRejectedLeave(Model model) {
+		Iterable<LecturerLeave> lecturerRejectedLeaves =
+				lecturerLeaveRepository.findByLecturerByLeave_LecturerIdAndStatus(
+						getLecturerUser().getLecturerUser().getLecturerId(), "Rejected");
+		model.addAttribute("lecturerRejectedLeaves", lecturerRejectedLeaves);
+		return "lecturer/lecturerRejectedLeaves";
 	}
 }

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>ReactJS + Spring Data REST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .navbar-custom{
+        background-color:#003D7B;
+        font-family:Century Gothic;
+        font-weight:bold;
+    }
+
+    .navbar-custom a{
+        color:#fff
+    }
+
+    .navbar-custom a:hover{
+        background-color:#D07221 !important;
+    }
+    .welcome {float:right;
+        color:#003D7B;
+        font-family:Century Gothic;
+        font-weight:bold;
+    }
+
+    .btn-link{
+        color:#003D7B;
+        font-family:Century Gothic;
+        font-weight:bold;
+    }
+
+    .table_div{
+        max-width:1500px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    body.studentlist a.studentlist{
+        background-color:#D07221
+    }
+
+    div.add_student{
+        margin-top:30px;
+        margin-bottom:30px;
+        margin-left:50px;
+        color:#003D7B;
+        font-family:Century Gothic;
+        font-weight:bold;
+    }
+</style>
+
+<body class="lecturerCourseList">
+
+<a th:href="@{/lecturer/leave/application}">Apply for new leave</a>
+<div th:switch="${lecturerPendingLeaves}">
+    <h2 th:case="null">You don't have any pending leave request!</h2>
+    <div th:case="*" class="table_div">
+        <table class="table" >
+            <thead>
+            <tr>
+                <th >Start date</th>
+                <th >End date</th>
+                <th>Edit</th>
+                <th>Cancel</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="leave : ${lecturerPendingLeaves}">
+                <td th:text="${#dates.format(leave.startDate, 'MM-dd-yyyy')}"></td>
+                <td th:text="${#dates.format(leave.endDate, 'MM-dd-yyyy')}"></td>
+                <td><a th:href = "@{|/lecturer/leave/pending/edit/${leave.startDate}|}">Edit</a></td>
+                <td><a th:href = "@{|/lecturer/leave/pending/cancel/${leave.startDate}|}">Cancel</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+
+</body>
+</html>

@@ -4,6 +4,7 @@ import SpringCA.entities.LecturerLeave;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class LecturerLeaveId implements Serializable {
 
@@ -14,11 +15,11 @@ public class LecturerLeaveId implements Serializable {
 
     private int lecturerByLeave;
 
-    private LocalDateTime startDate;
+    private Date startDate;
 
     public LecturerLeaveId(){}
 
-    public LecturerLeaveId(int lecturerByLeave, LocalDateTime startDate) {
+    public LecturerLeaveId(int lecturerByLeave, Date startDate) {
         this.lecturerByLeave = lecturerByLeave;
         this.startDate = startDate;
     }
@@ -31,11 +32,11 @@ public class LecturerLeaveId implements Serializable {
         this.lecturerByLeave = lecturerByLeave;
     }
 
-    public LocalDateTime getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 

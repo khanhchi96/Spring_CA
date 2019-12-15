@@ -58,8 +58,8 @@ insert into lecturer_course(course_id, lecturer_id, semester_id) values
 (1, 2, 6), (1, 4, 6), (2, 3, 6), (2, 4, 6), (3, 1, 6), (3, 5, 6);
 
 insert into lecturer_leave(lecturer_id, start_date, end_date, status) values
-(1, '2019-12-23', '2020-01-02', 'approved'),
-(2, '2020-01-12', '2020-01-29', 'pending');
+(1, '2019-12-23', '2020-01-02', 'Approved'),
+(2, '2020-01-12', '2020-01-29', 'Pending');
 
 insert into admin(first_name, middle_name, last_name, gender, birth_date, email, mobile) values
 ('Lee', 'Chia', 'Tay', 'Female', '1990-12-01', 'taychialee@gmail.com', '98387643'),
