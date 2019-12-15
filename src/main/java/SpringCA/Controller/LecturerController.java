@@ -79,8 +79,8 @@ public class LecturerController {
 		return "/lecturer/lecturerCourseList";
 	}
 	
-	@GetMapping("/course")//get specific lecturer's assigned courses;
-	public String getLecturerCourseByLecturerId(@PageableDefault(size=1) Pageable pageable,
+	@GetMapping("/course")
+	public String getLecturerCourseByLecturerId(@PageableDefault(size=size) Pageable pageable,
 			Model model) {
 		int lecturerId = lecturerUserRepository.findByUsername(userService.getUsername()).getLecturerUser().getLecturerId();
 		
