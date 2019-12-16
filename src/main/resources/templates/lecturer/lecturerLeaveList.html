@@ -11,7 +11,9 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
 </head>
-
+<style>
+    h2{color: black}
+</style>
 
 <body class="lecturerCourseList">
 
@@ -80,9 +82,6 @@
             <div th:switch="${leaveList}">
                 <h2 th:case="null">You have not taken any leave!</h2>
                 <div th:case="*" class="table_div">
-
-
-
                     <table class="table table-bordered" >
                         <thead class="thead-light">
                         <tr>
@@ -97,15 +96,8 @@
                         </tr>
                         </tbody>
                     </table>
-
                 </div>
-
             </div>
-
-
-
-
-
 
         </div>
     </div>

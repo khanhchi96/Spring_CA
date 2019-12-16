@@ -370,23 +370,25 @@ public class AdminController {
         return "redirect:/admin/course/detail/{id}";
     }
 
-    @GetMapping("/student/{id}")
-    public String studentDetail(@PathVariable("id") int id, Model model) {
+    @GetMapping("/student/{page}/{id}")
+    public String studentDetail(@PathVariable("id") int id, Model model, @PathVariable("page") int page) {
         Student student = studentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
         Iterable<StudentCourse> coursesByStudent = studentCourseRepository.findByStudentByCourse_StudentId(id);
         model.addAttribute("student", student);
         model.addAttribute("coursesByStudent", coursesByStudent);
+        model.addAttribute("page", page);
         return "admin/studentDetail";
     }
 
-    @GetMapping("/lecturer/{id}")
-    public String lecturerDetail(@PathVariable("id") int id, Model model) {
+    @GetMapping("/lecturer/{page}/{id}")
+    public String lecturerDetail(@PathVariable("id") int id, Model model, @PathVariable("page") int page) {
         Lecturer lecturer = lecturerRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid lecturer Id:" + id));
         Set<LecturerCourse> coursesByLecturer = lecturerCourseRepository.findByLecturerByCourse_LecturerId(id);
         model.addAttribute("lecturer", lecturer);
         model.addAttribute("coursesByLecturer", coursesByLecturer);
+        model.addAttribute("page", page);
         return "admin/lecturerDetail";
     }
 

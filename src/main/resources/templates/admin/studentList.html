@@ -75,7 +75,7 @@
             <tbody>
             <tr th:each="student : ${studentList}">
                 <td>
-                    <a th:href="@{|/admin/student/${student.studentId}|}" th:text="${student}"></a>
+                    <a th:href="@{|/admin/student/${page}/${student.studentId}|}" th:text="${student}"></a>
                 </td>
                 <td th:text="${student.gender}"></td>
                 <td th:text="${#dates.format(student.birthDate, 'dd-MM-yyyy')}"></td>
@@ -106,6 +106,13 @@
 </div>
 
 </body>
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    function color() {
+        $(this).style("background-color", "black");
+    }
+</script>
 </html>
 
 <!--<!DOCTYPE html>-->

@@ -36,8 +36,8 @@
 <div  style="margin-top:30px">
     <div class="container-fluid">
         <ul class="nav navbar navbar-left d-flex d-inline-flex">
-            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex" style=" background-color: #003D7B; color: white" th:href="@{/admin/lecturer/edit/{id}(id=${lecturer.lecturerId})}">Edit</a></li>
-            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex" style=" background-color: #003D7B; color: white" th:href="@{/admin/lecturer/delete/{id}(id=${lecturer.lecturerId})}">Delete</a></li>
+            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex" style=" background-color: #003D7B; color: white" th:href="@{|/admin/lecturer/${page}/edit/${lecturer.lecturerId}|}">Edit</a></li>
+            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex" style=" background-color: #003D7B; color: white" th:href="@{|/admin/lecturer/${page}/delete/${lecturer.lecturerId}|}">Delete</a></li>
         </ul>
     </div>
     <div class="container">

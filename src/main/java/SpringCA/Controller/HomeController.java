@@ -55,36 +55,23 @@ public class HomeController {
 
     @RequestMapping("/admin/admin")
     public String admin(Model model, HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        if(session != null) {
-//            if (session.isNew()) {
-//                System.out.println("New session is just created");
-//            } else {
-//                System.out.println("This is old session");
-//            }
-//        }else{
-//            System.out.println("null");
-//        }
-
-//        ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-//        System.out.println(attr.getRequest().getSession(true));
         AdminUser adminUser = adminUserRepository.findByUsername(userService.getUsername());
         model.addAttribute("adminUser", adminUser);
-        return "admin/index";
+        return "redirect:/admin/student/list";
     }
 
     @RequestMapping("/lecturer/lecturer")
     public String lecturer(Model model) {
         LecturerUser lecturerUser = lecturerUserRepository.findByUsername(userService.getUsername());
         model.addAttribute("lecturerUser", lecturerUser);
-        return "lecturer/index";
+        return "redirect:/admin/lecturer/list";
     }
 
     @RequestMapping("/student/student")
     public String user(Model model) {
         StudentUser studentUser = studentUserRepository.findByUsername(userService.getUsername());
         model.addAttribute("studentUser", studentUser);
-        return "student/index";
+        return "redirect:/admin/student/list";
     }
 
     @RequestMapping("/403")

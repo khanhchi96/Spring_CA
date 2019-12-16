@@ -16,4 +16,6 @@ public interface LecturerLeaveRepository extends JpaRepository<LecturerLeave, Le
     Page<LecturerLeave> findByStatus(String status, Pageable pageable);
 
     List<LecturerLeave> findByStatus(String status);
+
+    Iterable<LecturerLeave> findByLecturerByLeave_LecturerId(int id);
 }

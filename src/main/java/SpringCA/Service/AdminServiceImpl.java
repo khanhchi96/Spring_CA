@@ -39,6 +39,7 @@ public class AdminServiceImpl implements AdminService {
         this.lecturerCourseRepository = lecturerCourseRepository;
         this.lecturerRepository = lecturerRepository;
         this.lecturerLeaveRepository = lecturerLeaveRepository;
+        this.lecturerUserRepository = lecturerUserRepository;
     }
 
     public void reviewCourse(int studentId, int semesterId, int courseId, String action) {
@@ -113,6 +114,8 @@ public class AdminServiceImpl implements AdminService {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid lecturer Id:" + id));
         LecturerUser lecturerUser = lecturerUserRepository.findByLecturerUser_LecturerId(id);
         lecturerUserRepository.delete(lecturerUser);
+        Iterable<LecturerLeave> lecturerLeaves = lecturerLeaveRepository.findByLecturerByLeave_LecturerId(id);
+        for(LecturerLeave l:lecturerLeaves) lecturerLeaveRepository.delete(l);
         Iterable<LecturerCourse> lecturerCourses = lecturerCourseRepository.findByLecturerByCourse_LecturerId(id);
         for (LecturerCourse l : lecturerCourses) lecturerCourseRepository.delete(l);
         lecturerRepository.delete(lecturer);
