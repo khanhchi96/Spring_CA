@@ -20,7 +20,9 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -47,7 +49,7 @@ public class AdminController {
     @Autowired
     private FileSystemStorageService storageService;
 
-    private int size = 3;
+    private int size = 7;
 
     @Autowired
     public AdminController(StudentRepository studentRepository, SemesterRepository semesterRepository,
@@ -72,7 +74,6 @@ public class AdminController {
         this.adminService = adminService;
         this.lecturerLeaveRepository = lecturerLeaveRepository;
     }
-
 
 
     @ModelAttribute(name = "semesters")
@@ -106,17 +107,17 @@ public class AdminController {
     }
 
     @ModelAttribute("adminUser")
-    private AdminUser getAdminUser(){
+    private AdminUser getAdminUser() {
         return adminUserRepository.findByUsername(userService.getUsername());
     }
 
 
     @ModelAttribute("nextSemester")
-    private Semester getNextSemester(){
+    private Semester getNextSemester() {
         Iterable<Semester> semesters = semesterRepository.findAll();
         Date today = new Date();
-        for(Semester s:semesters){
-            if(s.getStartDate().compareTo(today) > 0)
+        for (Semester s : semesters) {
+            if (s.getStartDate().compareTo(today) > 0)
                 return s;
         }
         return null;
@@ -138,7 +139,7 @@ public class AdminController {
     }
 
     @GetMapping(value = "/profile")
-    public String getProfile(Model model){
+    public String getProfile(Model model) {
         AdminUser adminUser = adminUserRepository.findByUsername(userService.getUsername());
         model.addAttribute("adminUser", adminUser);
 //        if(getFiles() != null) model.addAttribute("avatar", getFiles().getHref());
@@ -149,22 +150,22 @@ public class AdminController {
 
     @GetMapping(value = "/{type}/list/page/{page}")
     public String listObjectsPageByPage(@PathVariable("page") int page, @PathVariable("type") String type, Model model) {
-        PageRequest pageable = PageRequest.of(page - 1, 3);
+        PageRequest pageable = PageRequest.of(page - 1, size);
         int totalPages = 0;
         if (type.equals("student")) {
             Page<Student> studentPages = studentRepository.findAll(pageable);
             totalPages = studentPages.getTotalPages();
-            if(studentPages.getTotalElements()>0) model.addAttribute("studentList", studentPages.getContent());
+            if (studentPages.getTotalElements() > 0) model.addAttribute("studentList", studentPages.getContent());
         }
         if (type.equals("lecturer")) {
             Page<Lecturer> lecturerPages = lecturerRepository.findAll(pageable);
             totalPages = lecturerPages.getTotalPages();
-            if(lecturerPages.getTotalElements() > 0) model.addAttribute("lecturerList", lecturerPages.getContent());
+            if (lecturerPages.getTotalElements() > 0) model.addAttribute("lecturerList", lecturerPages.getContent());
         }
         if (type.equals("course")) {
             Page<Course> coursePages = courseRepository.findAll(pageable);
             totalPages = coursePages.getTotalPages();
-            if(coursePages.getTotalElements() > 0) model.addAttribute("courseList", coursePages.getContent());
+            if (coursePages.getTotalElements() > 0) model.addAttribute("courseList", coursePages.getContent());
         }
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
@@ -313,7 +314,7 @@ public class AdminController {
     @GetMapping("/course/detail/{id}")
     public String getCourseSemesters(@PathVariable("id") int id, Model model) {
         Set<Semester> semesters = adminService.getSemestersForCourse(id);
-                Course course = courseRepository.findByCourseId(id);
+        Course course = courseRepository.findByCourseId(id);
         model.addAttribute("courseSemesters", semesters);
         model.addAttribute("course", course);
         return "admin/course-semester";
@@ -332,7 +333,8 @@ public class AdminController {
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<StudentCourse> studentCoursePages = studentCourseRepository.findByCourseByStudent_CourseIdAndSemesterStudentCourse_SemesterIdAndStatus(courseId, semesterId, "Approved", pageable);
         int totalStudentCoursePages = studentCoursePages.getTotalPages();
-        if(studentCoursePages.getTotalElements() > 0) model.addAttribute("studentCourseList", studentCoursePages.getContent());
+        if (studentCoursePages.getTotalElements() > 0)
+            model.addAttribute("studentCourseList", studentCoursePages.getContent());
 
         if (totalStudentCoursePages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalStudentCoursePages).boxed().collect(Collectors.toList());
@@ -393,13 +395,14 @@ public class AdminController {
     }
 
     @GetMapping("/course/registration/review/page/{page}")
-    public String getPendingCourses(Model model, @PathVariable("page") int page){
+    public String getPendingCourses(Model model, @PathVariable("page") int page) {
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<StudentCourse> pendingCoursePages =
                 studentCourseRepository.findBySemesterStudentCourse_SemesterIdAndStatus(
                         getNextSemester().getSemesterId(), "Pending", pageable);
         int totalPendingCoursePages = pendingCoursePages.getTotalPages();
-        if(pendingCoursePages.getTotalElements() > 0) model.addAttribute("pendingCourses", pendingCoursePages.getContent());
+        if (pendingCoursePages.getTotalElements() > 0)
+            model.addAttribute("pendingCourses", pendingCoursePages.getContent());
 
         if (totalPendingCoursePages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPendingCoursePages).boxed().collect(Collectors.toList());
@@ -412,22 +415,22 @@ public class AdminController {
     @GetMapping("/course/{page}/{action}/{studentId}/{semesterId}/{courseId}")
     public String reviewCourse(@PathVariable("studentId") int studentId, @PathVariable("semesterId") int semesterId,
                                @PathVariable("courseId") int courseId, @PathVariable("action") String action,
-                               @PathVariable("page") int page){
+                               @PathVariable("page") int page) {
         adminService.reviewCourse(studentId, semesterId, courseId, action);
         int count = studentCourseRepository.findBySemesterStudentCourse_SemesterIdAndStatus(
                 semesterId, "Pending").size();
         if ((count % size == 0) && (count / size == (page - 1))) page -= 1;
-        if(page != 0) return "redirect:/admin/course/registration/review/page/" + page;
+        if (page != 0) return "redirect:/admin/course/registration/review/page/" + page;
         else return "redirect:/admin/course/registration/review/page/1";
     }
 
     @GetMapping("/leave/request/review/page/{page}")
-    public String getPendingLeaves(Model model, @PathVariable("page") int page){
+    public String getPendingLeaves(Model model, @PathVariable("page") int page) {
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<LecturerLeave> pendingLeaves =
                 lecturerLeaveRepository.findByStatus("Pending", pageable);
         int totalPendingLeavesPages = pendingLeaves.getTotalPages();
-        if(pendingLeaves.getTotalElements() > 0) model.addAttribute("pendingLeaveRequest", pendingLeaves.getContent());
+        if (pendingLeaves.getTotalElements() > 0) model.addAttribute("pendingLeaveRequest", pendingLeaves.getContent());
         if (totalPendingLeavesPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPendingLeavesPages).boxed().collect(Collectors.toList());
             model.addAttribute("pageNumbers", pageNumbers);
@@ -439,13 +442,13 @@ public class AdminController {
     @GetMapping("/leave/{page}/{action}/{lecturerId}/{startDate}")
     public String reviewLeave(@PathVariable("startDate") String startDate, @PathVariable("lecturerId") int lecturerId,
                               @PathVariable("action") String action,
-                               @PathVariable("page") int page) throws ParseException {
+                              @PathVariable("page") int page) throws ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
         Date date = formatter.parse(startDate);
         adminService.reviewLeave(lecturerId, date, action);
         int count = lecturerLeaveRepository.findByStatus("Pending").size();
         if ((count % size == 0) && (count / size == (page - 1))) page -= 1;
-        if(page != 0) return "redirect:/admin/leave/request/review/page/" + page;
+        if (page != 0) return "redirect:/admin/leave/request/review/page/" + page;
         else return "redirect:/admin/leave/request/review/page/1";
     }
 }

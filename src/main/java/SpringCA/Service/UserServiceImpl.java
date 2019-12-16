@@ -101,23 +101,35 @@ public class UserServiceImpl implements UserService{
 
     public void createPasswordResetTokenForStudent(StudentUser studentUser, String token) {
         String url = constructResetTokenUrl(token, studentUser, "student");
+        String text ="Dear user,\nPlease click this link to reset your password: " + url +".\n This link will be" +
+                "expired in 24 hours. Please be reminded to reset your password before it is expired.\nThank you!\n" +
+                "Xoxo,\nGossip girl";
+        String subject = "RESET PASSWORD - " + studentUser.getStudentUser().toString().toUpperCase();
         PasswordResetTokenStudent myToken = new PasswordResetTokenStudent(token, studentUser);
         tokenStudentRepository.save(myToken);
-        emailServiceImpl.sendSimpleMessage(new String[]{studentUser.getStudentUser().getEmail()}, "RESET PASSWORD", url);
+        emailServiceImpl.sendSimpleMessage(new String[]{studentUser.getStudentUser().getEmail()}, subject, text);
     }
 
     public void createPasswordResetTokenForLecturer(LecturerUser lecturerUser, String token) {
         String url = constructResetTokenUrl(token, lecturerUser, "lecturer");
+        String text ="Dear user,\nPlease click this link to reset your password: " + url +".\n This link will be" +
+                "expired in 24 hours. Please be reminded to reset your password before it is expired.\nThank you!\n" +
+                "Xoxo,\nGossip girl";
+        String subject = "RESET PASSWORD - " + lecturerUser.getLecturerUser().toString().toUpperCase();
         PasswordResetTokenLecturer myToken = new PasswordResetTokenLecturer(token, lecturerUser);
         tokenLecturerRepository.save(myToken);
-        emailServiceImpl.sendSimpleMessage(new String[]{lecturerUser.getLecturerUser().getEmail()}, "RESET PASSWORD", url);
+        emailServiceImpl.sendSimpleMessage(new String[]{lecturerUser.getLecturerUser().getEmail()}, subject, text);
     }
 
     public void createPasswordResetTokenForAdmin(AdminUser adminUser, String token) {
         String url = constructResetTokenUrl(token, adminUser, "admin");
+        String text ="Dear user,\nPlease click this link to reset your password: " + url +".\n This link will be" +
+                "expired in 24 hours. Please be reminded to reset your password before it is expired.\nThank you!\n" +
+                "Xoxo,\nGossip girl";
+        String subject = "RESET PASSWORD - " + adminUser.getAdminUser().toString().toUpperCase();
         PasswordResetTokenAdmin myToken = new PasswordResetTokenAdmin(token, adminUser);
         tokenAdminRepository.save(myToken);
-        emailServiceImpl.sendSimpleMessage(new String[]{adminUser.getAdminUser().getEmail()}, "RESET PASSWORD", url);
+        emailServiceImpl.sendSimpleMessage(new String[]{adminUser.getAdminUser().getEmail()}, subject, text);
     }
 
     public void resetStudentPassword(String username, String password) {

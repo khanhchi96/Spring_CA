@@ -50,6 +50,13 @@ public class HomeController {
 
     @RequestMapping("/")
     public String index() {
+
+//        if(userService.getUsername() != null) {
+//            String username = userService.getUsername();
+//            if (adminUserRepository.findByUsername(username) != null) return "redirect:/admin/admin";
+//            else if (lecturerUserRepository.findByUsername(username) != null) return "redirect:/lecturer/lecturer";
+//            else if (studentUserRepository.findByUsername(username) != null) return "redirect:/student/student";
+//        }
         return "index";
     }
 

@@ -16,7 +16,9 @@
                 <td>Reject</td>
             </tr>
             <tr th:each="leave: ${pendingLeaveRequest}">
-                <td th:text="${leave.lecturerByLeave}"></td>
+                <td>
+                    <a th:href="@{|/admin/lecturer/{leave.lecturerByLeave.lecturerId}|}" th:text="${leave.lecturerByLeave}"></a>
+                </td>
                 <td th:text="${#dates.format(leave.startDate, 'MM-dd-yyyy')}"></td>
                 <td th:text="${#dates.format(leave.endDate, 'MM-dd-yyyy')}"></td>
                 <td><a th:href="@{|/admin/leave/${page}/approve/${leave.lecturerByLeave.lecturerId}/${leave.startDate}|}">
