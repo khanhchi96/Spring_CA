@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     PasswordEncoder passwordEncoder() {
@@ -63,11 +63,11 @@ public class UserServiceImpl implements UserService{
         lecturerUserRepository.save(lecturerUser);
     }
 
-    public String getUsername(){
+    public String getUsername() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username;
         if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
+            username = ((UserDetails) principal).getUsername();
         } else {
             username = principal.toString();
         }
@@ -101,7 +101,7 @@ public class UserServiceImpl implements UserService{
 
     public void createPasswordResetTokenForStudent(StudentUser studentUser, String token) {
         String url = constructResetTokenUrl(token, studentUser, "student");
-        String text ="Dear user,\nPlease click this link to reset your password: " + url +".\n This link will be" +
+        String text = "Dear user,\nPlease click this link to reset your password: " + url + ".\n This link will be" +
                 "expired in 24 hours. Please be reminded to reset your password before it is expired.\nThank you!\n" +
                 "Xoxo,\nGossip girl";
         String subject = "RESET PASSWORD - " + studentUser.getStudentUser().toString().toUpperCase();
@@ -112,7 +112,7 @@ public class UserServiceImpl implements UserService{
 
     public void createPasswordResetTokenForLecturer(LecturerUser lecturerUser, String token) {
         String url = constructResetTokenUrl(token, lecturerUser, "lecturer");
-        String text ="Dear user,\nPlease click this link to reset your password: " + url +".\n This link will be" +
+        String text = "Dear user,\nPlease click this link to reset your password: " + url + ".\n This link will be" +
                 "expired in 24 hours. Please be reminded to reset your password before it is expired.\nThank you!\n" +
                 "Xoxo,\nGossip girl";
         String subject = "RESET PASSWORD - " + lecturerUser.getLecturerUser().toString().toUpperCase();
@@ -123,7 +123,7 @@ public class UserServiceImpl implements UserService{
 
     public void createPasswordResetTokenForAdmin(AdminUser adminUser, String token) {
         String url = constructResetTokenUrl(token, adminUser, "admin");
-        String text ="Dear user,\nPlease click this link to reset your password: " + url +".\n This link will be" +
+        String text = "Dear user,\nPlease click this link to reset your password: " + url + ".\n This link will be" +
                 "expired in 24 hours. Please be reminded to reset your password before it is expired.\nThank you!\n" +
                 "Xoxo,\nGossip girl";
         String subject = "RESET PASSWORD - " + adminUser.getAdminUser().toString().toUpperCase();

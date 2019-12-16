@@ -25,7 +25,8 @@ public class Course {
     @OneToMany(mappedBy = "courseByLecturer")
     private List<LecturerCourse> lecturerCourseList;
 
-    public Course(){}
+    public Course() {
+    }
 
     public Course(String courseCode, String courseName, int courseUnit, Department departmentCourse) {
         this.courseCode = courseCode;

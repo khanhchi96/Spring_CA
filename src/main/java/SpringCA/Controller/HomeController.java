@@ -51,7 +51,7 @@ public class HomeController {
     @RequestMapping("/")
     public String index() {
 
-        if(userService.getUsername() != null) {
+        if (userService.getUsername() != null) {
             String username = userService.getUsername();
             if (adminUserRepository.findByUsername(username) != null) return "redirect:/admin/admin";
             else if (lecturerUserRepository.findByUsername(username) != null) return "redirect:/lecturer/lecturer";
@@ -88,7 +88,7 @@ public class HomeController {
 
     @GetMapping(value = "/{security}/changePassword/{username}")
     public String changePassword(@PathVariable("username") String username, Model model,
-                                 @PathVariable("security") String security, ResetPassword resetPassword){
+                                 @PathVariable("security") String security, ResetPassword resetPassword) {
         model.addAttribute("username", username);
         model.addAttribute("security", security);
         return "resetPassword";
@@ -97,8 +97,8 @@ public class HomeController {
     @PostMapping(value = "/{security}/changePassword/{username}")
     public String resetPassword(@PathVariable("username") String username, @PathVariable("security") String security,
                                 @Valid ResetPassword resetPassword,
-                                BindingResult result, Model model){
-        if(result.hasErrors()){
+                                BindingResult result, Model model) {
+        if (result.hasErrors()) {
             model.addAttribute("username", username);
             return "resetPassword";
         }

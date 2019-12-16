@@ -23,7 +23,8 @@ public class Semester {
     @OneToMany(mappedBy = "semesterLecturerCourse")
     private List<LecturerCourse> lecturerCourseListBySemester;
 
-    public Semester(){}
+    public Semester() {
+    }
 
     public Semester(String semesterLabel, Date startDate, Date endDate) {
         this.semesterLabel = semesterLabel;

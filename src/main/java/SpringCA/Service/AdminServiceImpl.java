@@ -69,11 +69,11 @@ public class AdminServiceImpl implements AdminService {
         LecturerLeave lecturerLeave = lecturerLeaveRepository.findById(lecturerLeaveId)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid"));
         String url = "http://localhost:8080/lecturer/leave/";
-        if(action.equals("approve")){
+        if (action.equals("approve")) {
             lecturerLeave.setStatus("Approved");
             url += "list";
         }
-        if(action.equals("reject")){
+        if (action.equals("reject")) {
             lecturerLeave.setStatus("Rejected");
             url += "rejected/list";
         }
@@ -83,8 +83,8 @@ public class AdminServiceImpl implements AdminService {
         String mailSubject = "LECTURER LEAVE REQUEST REVIEW - " + lecturer.toString().toUpperCase();
         String text = "Dear " + lecturer.toString().toUpperCase() + ",\nYour request for leave from " +
                 formatter2.format(lecturerLeave.getStartDate()) + " to " +
-                formatter2.format(lecturerLeave.getEndDate()) + " have been "+
-                lecturerLeave.getStatus().toLowerCase() +". You can view the result via this link: " + url +
+                formatter2.format(lecturerLeave.getEndDate()) + " have been " +
+                lecturerLeave.getStatus().toLowerCase() + ". You can view the result via this link: " + url +
                 "\nThank you!\nXoxo,\nGossip girl";
         emailService.sendSimpleMessage(new String[]{lecturer.getEmail()}, mailSubject, text);
     }
@@ -115,7 +115,7 @@ public class AdminServiceImpl implements AdminService {
         LecturerUser lecturerUser = lecturerUserRepository.findByLecturerUser_LecturerId(id);
         lecturerUserRepository.delete(lecturerUser);
         Iterable<LecturerLeave> lecturerLeaves = lecturerLeaveRepository.findByLecturerByLeave_LecturerId(id);
-        for(LecturerLeave l:lecturerLeaves) lecturerLeaveRepository.delete(l);
+        for (LecturerLeave l : lecturerLeaves) lecturerLeaveRepository.delete(l);
         Iterable<LecturerCourse> lecturerCourses = lecturerCourseRepository.findByLecturerByCourse_LecturerId(id);
         for (LecturerCourse l : lecturerCourses) lecturerCourseRepository.delete(l);
         lecturerRepository.delete(lecturer);
@@ -129,8 +129,8 @@ public class AdminServiceImpl implements AdminService {
         return semesters;
     }
 
-    public long getLastPage(long count, int size){
-        if(count % size == 0) return count/size;
-        else return ((long) Math.floor(count/size) + 1);
+    public long getLastPage(long count, int size) {
+        if (count % size == 0) return count / size;
+        else return ((long) Math.floor(count / size) + 1);
     }
 }

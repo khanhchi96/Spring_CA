@@ -5,9 +5,7 @@ import SpringCA.Validation.EmailConstraint;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @MappedSuperclass
@@ -30,7 +28,8 @@ public class Person {
     @ContactNumberConstraint
     private String mobile;
 
-    public Person(){}
+    public Person() {
+    }
 
     public Person(String firstName, String middleName, String lastName, String gender,
                   Date birthDate, String address, String email, String mobile) {
@@ -110,7 +109,7 @@ public class Person {
 
     @Override
     public String toString() {
-        if(middleName != null) return lastName +" "+ middleName + " " + firstName;
+        if (middleName != null) return lastName + " " + middleName + " " + firstName;
         else return lastName + " " + firstName;
     }
 }

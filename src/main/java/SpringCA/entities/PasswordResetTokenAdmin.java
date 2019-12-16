@@ -11,7 +11,8 @@ public class PasswordResetTokenAdmin extends PasswordResetToken {
     @JoinColumn(name = "admin_username")
     private AdminUser adminUser;
 
-    public PasswordResetTokenAdmin(){}
+    public PasswordResetTokenAdmin() {
+    }
 
     public PasswordResetTokenAdmin(String token, AdminUser adminUser) {
         super(token);

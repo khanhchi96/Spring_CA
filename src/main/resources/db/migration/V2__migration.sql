@@ -70,7 +70,7 @@ insert into student_course(course_id, semester_id, student_id, score, status) va
 (4, 5, 1, 0.0, 'Approved'), (4, 5, 2, 0.0, 'Approved'), (4, 5, 3, 0.0, 'Approved'), (4, 5, 4, 0.0, 'Approved'),
 (4, 5, 5, 0.0, 'Approved'), (4, 5, 6, 0.0, 'Rejected'), (4, 5, 7, 0.0, 'Approved'),
 (5, 5, 1, 0.0, 'Approved'), (5, 5, 2, 0.0, 'Approved'), (5, 5, 3, 0.0, 'Approved'), (5, 5, 4, 0.0, 'Approved'),
-(5, 5, 5, 0.0, 'Rejected'), (5, 5, 6, 0.0, 'Approved'), (5, 5, 7, 0.0, 'Approved'),
+(5, 5, 11, 0.0, 'Rejected'), (5, 5, 6, 0.0, 'Approved'), (5, 5, 7, 0.0, 'Approved'),
 (6, 5, 8, 0.0, 'Approved'), (6, 5, 9, 0.0, 'Approved'), (6, 5, 12, 0.0, 'Approved'), (6, 6, 7, 0.0, 'Approved'),
 (7, 6, 9, 0.0, 'Pending'), (7, 6, 8, 0.0, 'Pending'), (7, 6, 13, 0.0, 'Pending'),
 (8, 5, 10, 0.0, 'Approved'), (8, 5, 12, 0.0, 'Pending'), (8, 5, 11, 0.0, 'Approved'), (8, 6, 13, 0.0, 'Approved'),

@@ -1,12 +1,11 @@
 package SpringCA.entities;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Lecturer extends Person{
+public class Lecturer extends Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int lecturerId;
@@ -23,7 +22,8 @@ public class Lecturer extends Person{
     @OneToOne(mappedBy = "lecturerUser")
     private LecturerUser lecturerUser;
 
-    public Lecturer(){}
+    public Lecturer() {
+    }
 
     public Lecturer(String firstName, String middleName, String lastName, String gender, Date birthDate,
                     String address, String email, String mobile, Department departmentLecturer) {

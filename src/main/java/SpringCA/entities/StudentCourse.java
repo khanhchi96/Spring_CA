@@ -26,7 +26,8 @@ public class StudentCourse {
 
     private float score;
 
-    public StudentCourse(){}
+    public StudentCourse() {
+    }
 
     public StudentCourse(Student studentByCourse, Course courseByStudent, Semester semesterStudentCourse, float score, String status) {
         this.studentByCourse = studentByCourse;

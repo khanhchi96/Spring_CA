@@ -10,35 +10,40 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    #navbar-custom{
-        background-color:#003D7B ;
-        font-weight:bold ;
+    #navbar-custom {
+        background-color: #003D7B;
+        font-weight: bold;
     }
-    #navbar-custom a{
-        color:#fff ;
+
+    #navbar-custom a {
+        color: #fff;
     }
-    #navbar-custom a:hover{
-        background-color:#D07221 !important;
+
+    #navbar-custom a:hover {
+        background-color: #D07221 !important;
     }
-    .welcome{
-        float:right;
-        color:#003D7B;!important;
-        font-family:Century Gothic;
-        font-weight:bold;
+
+    .welcome {
+        float: right;
+        color: #003D7B;
+    !important;
+        font-family: Century Gothic;
+        font-weight: bold;
     }
-    .btn-link{
-        color:#003D7B !important;
-        font-weight:bold !important;
+
+    .btn-link {
+        color: #003D7B !important;
+        font-weight: bold !important;
 </style>
 <style>
-    .student-list{
+    .student-list {
         background-color: #D07221;
     }
 </style>
 <body>
 <div th:insert="~{admin/index :: adminheader}"></div>
 <div class="container" style="margin-top:30px">
-    <form class="form-horizontal" th:action = "@{/admin/student/{page}/save/{id}(page = ${page}, id=${id})}"
+    <form class="form-horizontal" th:action="@{/admin/student/{page}/save/{id}(page = ${page}, id=${id})}"
           th:object="${student}" method="post">
         <div class="input-group mb-3 input-group-md">
             <div class="input-group-prepend">
@@ -49,7 +54,7 @@
         </div>
         <div class="input-group mb-3 input-group-md">
             <div class="input-group-prepend">
-                <label for="lastName"class="input-group-text">Last name </label>
+                <label for="lastName" class="input-group-text">Last name </label>
             </div>
             <input type="text" class="form-control" th:field="*{lastName}" id="lastName"><br>
             <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
@@ -90,7 +95,7 @@
             <div class="input-group-prepend">
                 <label for="degree" class="input-group-text">Degree </label>
             </div>
-            <select th:field="*{degree.degreeId}" class="form-control"  id="degree">
+            <select th:field="*{degree.degreeId}" class="form-control" id="degree">
                 <option th:each="degree: ${degrees}" th:value=${degree.degreeId} th:text=${degree.degreeLabel}></option>
             </select>
         </div>
@@ -98,7 +103,7 @@
             <div class="input-group-prepend">
                 <label for="level" class="input-group-text">Level </label>
             </div>
-            <select th:field="*{level}" class="form-control"  id="level">
+            <select th:field="*{level}" class="form-control" id="level">
                 <option th:value="'Year 1'" th:text="'Year 1'"></option>
                 <option th:value="'Year 2'" th:text="'Year 2'"></option>
                 <option th:value="'Year 3'" th:text="'Year 3'"></option>
@@ -112,7 +117,8 @@
                 <label for="semester" class="input-group-text">Semester </label>
             </div>
             <select th:field="*{semesterEnrolled.semesterId}" class="form-control" id="semester">
-                <option th:each="semester: ${semesters}" th:value=${semester.semesterId} th:text=${semester.semesterLabel}></option>
+                <option th:each="semester: ${semesters}" th:value=${semester.semesterId}
+                        th:text=${semester.semesterLabel}></option>
             </select>
             <p th:if="${#fields.hasErrors('semesterEnrolled')}" th:errors="*{semesterEnrolled}"></p>
         </div>
@@ -142,8 +148,9 @@
             </div>
             <input type="number" class="form-control" step="any" th:field="*{GPA}" id="GPA"><br>
         </div>
-        <div class="input-group mb-3 input-group-md" >
-            <input type="submit" class="form-control" style="background-color:#003D7B; color: white; font-weight: bolder" value="Save">
+        <div class="input-group mb-3 input-group-md">
+            <input type="submit" class="form-control"
+                   style="background-color:#003D7B; color: white; font-weight: bolder" value="Save">
         </div>
     </form>
 </div>

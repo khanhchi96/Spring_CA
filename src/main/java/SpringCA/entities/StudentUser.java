@@ -1,18 +1,18 @@
 package SpringCA.entities;
 
-import SpringCA.entities.CompositeId.UserId;
-
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
-public class StudentUser extends User{
+public class StudentUser extends User {
 
     @OneToOne
     @JoinColumn(name = "student_id")
     private Student studentUser;
 
-    public StudentUser(){}
+    public StudentUser() {
+    }
 
     public StudentUser(String username, String password, Student studentUser) {
         super(username, password);
@@ -28,7 +28,7 @@ public class StudentUser extends User{
     }
 
     @Override
-    public String getRole(){
+    public String getRole() {
         return "STUDENT";
     }
 }

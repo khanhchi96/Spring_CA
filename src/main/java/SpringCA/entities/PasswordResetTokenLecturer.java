@@ -6,12 +6,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class PasswordResetTokenLecturer extends PasswordResetToken{
+public class PasswordResetTokenLecturer extends PasswordResetToken {
     @OneToOne(targetEntity = LecturerUser.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "lecturer_username")
     private LecturerUser lecturerUser;
 
-    public PasswordResetTokenLecturer(){}
+    public PasswordResetTokenLecturer() {
+    }
 
     public PasswordResetTokenLecturer(String token, LecturerUser lecturerUser) {
         super(token);

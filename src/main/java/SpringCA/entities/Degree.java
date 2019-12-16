@@ -13,7 +13,8 @@ public class Degree {
     @OneToMany(mappedBy = "degree")
     private List<Student> students;
 
-    public Degree(){}
+    public Degree() {
+    }
 
     public Degree(String degreeLabel) {
         this.degreeLabel = degreeLabel;

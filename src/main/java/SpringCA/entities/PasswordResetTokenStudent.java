@@ -1,7 +1,9 @@
 package SpringCA.entities;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class PasswordResetTokenStudent extends PasswordResetToken {
@@ -10,7 +12,8 @@ public class PasswordResetTokenStudent extends PasswordResetToken {
     @JoinColumn(name = "student_username")
     private StudentUser studentUser;
 
-    public PasswordResetTokenStudent(){}
+    public PasswordResetTokenStudent() {
+    }
 
     public PasswordResetTokenStudent(String token, StudentUser studentUser) {
         super(token);

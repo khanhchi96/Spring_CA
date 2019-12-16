@@ -11,8 +11,8 @@ public class EmailValidator implements ConstraintValidator<EmailConstraint, Stri
     @Override
     public boolean isValid(String email,
                            ConstraintValidatorContext cxt) {
-        return email != null && email.matches("^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."+
-                "[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+(?:[a-zA-Z]{2}"+
+        return email != null && email.matches("^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\." +
+                "[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\\.)+(?:[a-zA-Z]{2}" +
                 "|aero|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel)$");
     }
 }

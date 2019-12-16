@@ -22,7 +22,8 @@ public class LecturerCourse {
     @JoinColumn(name = "semesterId")
     private Semester semesterLecturerCourse;
 
-    public LecturerCourse(){}
+    public LecturerCourse() {
+    }
 
     public LecturerCourse(Lecturer lecturerByCourse, Course courseByLecturer, Semester semesterLecturerCourse) {
         this.lecturerByCourse = lecturerByCourse;

@@ -30,7 +30,8 @@ public class LecturerLeave {
 
     private String status;
 
-    public LecturerLeave(){}
+    public LecturerLeave() {
+    }
 
     public LecturerLeave(Lecturer lecturerByLeave, Date startDate, Date endDate, String status) {
         this.lecturerByLeave = lecturerByLeave;

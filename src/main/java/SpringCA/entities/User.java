@@ -1,8 +1,5 @@
 package SpringCA.entities;
 
-import SpringCA.entities.CompositeId.UserId;
-
-import javax.persistence.EmbeddedId;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -13,7 +10,8 @@ public class User {
 
     private String password;
 
-    public User(){}
+    public User() {
+    }
 
     public User(String username, String password) {
         this.username = username;
@@ -36,7 +34,7 @@ public class User {
         this.password = password;
     }
 
-    public String getRole(){
+    public String getRole() {
         return "role";
     }
 }

@@ -62,7 +62,7 @@ public class CsvWriter {
 
 
         } catch (Exception e) {
-            throw  new IOException("Error!");
+            throw new IOException("Error!");
         }
 
     }

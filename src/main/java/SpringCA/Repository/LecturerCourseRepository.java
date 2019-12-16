@@ -1,6 +1,5 @@
 package SpringCA.Repository;
 
-import SpringCA.entities.Lecturer;
 import SpringCA.entities.LecturerCourse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
