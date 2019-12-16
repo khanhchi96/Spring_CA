@@ -31,14 +31,18 @@
         color:#003D7B !important;
         font-weight:bold !important;
 </style>
+<style>
+    .courseReg{
+        background-color: #D07221;
+    }
+</style>
 <body>
 <div th:insert="~{admin/index :: adminheader}"></div>
 <div th:switch="${pendingCourses}">
     <h2 th:case="null">No pending courses</h2>
     <div th:case="*">
-        <p>Your are viewing pending course for semester [[${nextSemester.semesterLabel}]].
-            This semester will start from [[${nextSemester.startDate}]]. </p>
-        <p>please be reminded to approve or reject registration requests before this date.
+        <p style="margin:50px;">Your are viewing pending course for semester [[${nextSemester.semesterLabel}]].
+            This semester will start from [[${#dates.format(nextSemester.startDate, 'MM-dd-yyyy')}]]. <br/>Please be reminded to approve or reject registration requests before this date.
             An email will be sent to student to inform them of the course registration result.</p>
         <hr/>
         <div class="container" style="margin-top: 30px">

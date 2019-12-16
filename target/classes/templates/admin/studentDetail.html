@@ -30,13 +30,18 @@
         color:#003D7B !important;
         font-weight:bold !important;
 </style>
+<style>
+    .student-list{
+        background-color: #D07221;
+    }
+</style>
 <body>
 <div th:insert="~{admin/index :: adminheader}"></div>
 <div  style="margin-top:30px">
     <div class="container-fluid">
         <ul class="nav navbar navbar-left d-flex d-inline-flex">
-            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex" style=" background-color: #003D7B; color: white" th:href="@{/admin/student/edit/{id}(id=${student.studentId})}">Edit</a></li>
-            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex" style=" background-color: #003D7B; color: white" th:href="@{/admin/student/delete/{id}(id=${student.studentId})}">Delete</a></li>
+            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex" style=" background-color: #003D7B; color: white" th:href="@{|/admin/student/${page}/edit/${student.studentId}|}">Edit</a></li>
+            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex" style=" background-color: #003D7B; color: white" th:href="@{|/admin/student/${page}/delete/${student.studentId}|}">Delete</a></li>
         </ul>
     </div>
     <div class="container">
@@ -74,45 +79,3 @@
 </div>
 </body>
 </html>
-
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="https://www.thymeleaf.org">-->
-<!--<head lang="en">-->
-<!--    <meta charset="UTF-8"/>-->
-<!--    <title>ReactJS + Spring Data REST</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<div>-->
-<!--    <p th:text="${student}"></p>-->
-<!--    <p> Gender: [[${student.gender}]]</p>-->
-<!--    <p> Birthdate: [[${#dates.format(student.birthDate, 'dd-MM-yyyy')}]]</p>-->
-<!--    <p> Mobile phone: [[${student.mobile}]]</p>-->
-<!--    <p> Email: [[${student.email}]]</p>-->
-<!--    <p> Address: [[${student.address}]]</p>-->
-<!--    <p> Degree: [[${student.degree.degreeLabel}]]</p>-->
-<!--    <p> Semester: [[${student.semesterEnrolled.semesterLabel}]]</p>-->
-<!--    <p> Level: [[${student.level}]]</p>-->
-<!--    <p> Status: [[${student.status}]]</p>-->
-<!--    <p> GPA: [[${student.GPA}]]</p>-->
-
-<!--    <p> List of courses:</p>-->
-<!--    <table>-->
-<!--        <tr>-->
-<!--            <td>Semester</td>-->
-<!--            <td>Course code</td>-->
-<!--            <td>Course name</td>-->
-<!--            <td>Score</td>-->
-<!--        </tr>-->
-<!--        <tr th:each="course: ${coursesByStudent}">-->
-<!--            <td th:text="${course.semesterStudentCourse.semesterLabel}"></td>-->
-<!--            <td th:text="${course.courseByStudent.courseCode}"></td>-->
-<!--            <td th:text="${course.courseByStudent.courseName}"></td>-->
-<!--            <td th:text="${course.score}"></td>-->
-<!--        </tr>-->
-<!--    </table>-->
-
-<!--    <p><a th:href="@{/admin/student/edit/{id}(id=${student.studentId})}">Edit</a></p>-->
-<!--    <p><a th:href="@{/admin/student/delete/{id}(id=${student.studentId})}">Delete</a></p>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->

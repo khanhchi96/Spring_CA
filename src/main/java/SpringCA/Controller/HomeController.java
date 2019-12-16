@@ -51,12 +51,12 @@ public class HomeController {
     @RequestMapping("/")
     public String index() {
 
-//        if(userService.getUsername() != null) {
-//            String username = userService.getUsername();
-//            if (adminUserRepository.findByUsername(username) != null) return "redirect:/admin/admin";
-//            else if (lecturerUserRepository.findByUsername(username) != null) return "redirect:/lecturer/lecturer";
-//            else if (studentUserRepository.findByUsername(username) != null) return "redirect:/student/student";
-//        }
+        if(userService.getUsername() != null) {
+            String username = userService.getUsername();
+            if (adminUserRepository.findByUsername(username) != null) return "redirect:/admin/admin";
+            else if (lecturerUserRepository.findByUsername(username) != null) return "redirect:/lecturer/lecturer";
+            else if (studentUserRepository.findByUsername(username) != null) return "redirect:/student/student";
+        }
         return "index";
     }
 
@@ -71,14 +71,14 @@ public class HomeController {
     public String lecturer(Model model) {
         LecturerUser lecturerUser = lecturerUserRepository.findByUsername(userService.getUsername());
         model.addAttribute("lecturerUser", lecturerUser);
-        return "redirect:/admin/lecturer/list";
+        return "redirect:/lecturer/course/list/page/1";
     }
 
     @RequestMapping("/student/student")
     public String user(Model model) {
         StudentUser studentUser = studentUserRepository.findByUsername(userService.getUsername());
         model.addAttribute("studentUser", studentUser);
-        return "redirect:/admin/student/list";
+        return "redirect:/student/courseEnrolled";
     }
 
     @RequestMapping("/403")

@@ -42,7 +42,9 @@ public class WebSecurityConfig {
                     .usernameParameter("username")//
                     .passwordParameter("password")
                     .and().exceptionHandling().accessDeniedPage("/403")
-                    .and().logout().logoutUrl("/admin/j_spring_security_logout").logoutSuccessUrl("/login_admin?message=logout");
+                    .and().logout().logoutUrl("/admin/j_spring_security_logout").logoutSuccessUrl("/login_admin?message=logout")
+                    .deleteCookies("JSESSIONID")
+                    .invalidateHttpSession(true) ;
         }
 
     }
@@ -62,7 +64,9 @@ public class WebSecurityConfig {
                     .usernameParameter("username")//
                     .passwordParameter("password")
                     .and().exceptionHandling().accessDeniedPage("/403")
-                    .and().logout().logoutUrl("/lecturer/j_spring_security_logout").logoutSuccessUrl("/login_lecturer?message=logout");
+                    .and().logout().logoutUrl("/lecturer/j_spring_security_logout").logoutSuccessUrl("/login_lecturer?message=logout")
+                    .deleteCookies("JSESSIONID")
+                    .invalidateHttpSession(true) ;
         }
 
     }
@@ -82,7 +86,9 @@ public class WebSecurityConfig {
                     .failureUrl("/login_student?message=error")//
                     .usernameParameter("username").passwordParameter("password")
                     .and().exceptionHandling().accessDeniedPage("/403")
-                    .and().logout().logoutUrl("/student/j_spring_security_logout").logoutSuccessUrl("/login_student?message=logout");
+                    .and().logout().logoutUrl("/student/j_spring_security_logout").logoutSuccessUrl("/login_student?message=logout")
+                    .deleteCookies("JSESSIONID")
+                    .invalidateHttpSession(true) ;
         }
     }
 
