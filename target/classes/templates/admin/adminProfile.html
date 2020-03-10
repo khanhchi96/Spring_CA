@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Spring Boot Security</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,76 +9,81 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    #navbar-custom{
-        background-color:#003D7B ;
-        font-weight:bold ;
+    #navbar-custom {
+        background-color: #003D7B;
+        font-weight: bold;
     }
-    #navbar-custom a{
-        color:#fff ;
+
+    #navbar-custom a {
+        color: #fff;
     }
-    #navbar-custom a:hover{
-        background-color:#D07221 !important;
+
+    #navbar-custom a:hover {
+        background-color: #D07221 !important;
     }
-    .welcome{
-        float:right;
-        color:#003D7B;!important;
-        font-family:Century Gothic;
-        font-weight:bold;
+
+    .welcome {
+        float: right;
+        color: #003D7B;
+    !important;
+        font-family: Century Gothic;
+        font-weight: bold;
     }
-    .btn-link{
-        color:#003D7B !important;
-        font-weight:bold !important;
+
+    .btn-link {
+        color: #003D7B !important;
+        font-weight: bold !important;
 </style>
 <body>
 <div th:insert="~{admin/index :: adminheader}"></div>
 <div class="container" style="margin-top: 30px">
     <h4 th:text="${adminUser.adminUser}"></h4>
-    <h4><a class="btn" style="background-color: #003D7B;color: white;font-weight: bold" th:href="@{/admin/changePassword/{username}(username=${adminUser.username})}">Change password</a></h4>
+    <h4><a class="btn" style="background-color: #003D7B;color: white;font-weight: bold"
+           th:href="@{/admin/changePassword/{username}(username=${adminUser.username})}">Change password</a></h4>
+    <br/>
+    <table class="table">
+        <!--<p th:text="${student.firstName}"></p>-->
+        <tr>
+            <td>Name:</td>
+            <td th:text = "${adminUser.adminUser}"></td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td>
+                <p th:text = "${adminUser.adminUser.gender}">Gender</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>BirthDate:</td>
+            <td>
+                <p th:text="${#dates.format(adminUser.adminUser.birthDate, 'dd-MM-yyyy')}">Birth Date</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Email:</td>
+            <td>
+                <p th:text = "${adminUser.adminUser.email}">Email</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Mobile:</td>
+            <td>
+                <p th:text = "${adminUser.adminUser.mobile}">Mobile</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Address:</td>
+            <td>
+                <p th:text = "${adminUser.adminUser.address}">Address</p>
+            </td>
+        </tr>
+
+    </table>
 </div>
-<!--<div class="container">-->
-<!--    <div class="page-header">-->
-<!--        <h1>Upload/Download Application</h1>-->
-<!--    </div>-->
-<!--    <div th:if="${avatar != null}">-->
-<!--        <img src="${avatar}"/>-->
-<!--    </div>-->
-<!--    <div class="row">-->
-<!--        <div class="col-md-12">-->
-<!--            <form method="POST" enctype="multipart/form-data" action="#"-->
-<!--                  th:action="@{/admin/img/upload}">-->
-<!--                <div class="row border">-->
-<!--                    <div class="col-md-5 text-left">-->
-<!--                        <div class="input-group">-->
-<!--                            <label class="input-group-btn"> <span-->
-<!--                                    class="btn btn-primary"> Browse&hellip; <input-->
-<!--                                    type="file" name="file" accept=".jpg, .png" id="customFile"-->
-<!--                                    style="display: none;" />-->
-<!--								</span>-->
-<!--                            </label> <input type="text" class="form-control" id="customFileHolder"-->
-<!--                                            readonly="true" />-->
-<!--                        </div>-->
-<!--                        <span class="help-block"> Try selecting a <em>text</em>-->
-<!--								file to upload.-->
-<!--							</span>-->
-<!--                    </div>-->
-<!--                    <div class="col-md-2">-->
-<!--                        <input type="submit" id="btnUploadFile" value="Upload"-->
-<!--                               class="btn btn-primary" />-->
-<!--                    </div>-->
-<!--                    <div class="col-md-5 text-left">-->
-<!--                        <div th:if="${message}" th:text="${message}" class="alert alert-success" role="alert" id="divUploadSuccess">-->
-<!--                            Upload Success.-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="row">-->
-<!--        <div id="fileList"></div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<input type="hidden" th:value="@{/files/list}" id="urlFileList" />-->
-<!--<script type="text/javascript" th:src="@{/js/upload.js}"></script>-->
+
 </body>
 </html>

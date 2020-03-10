@@ -57,9 +57,7 @@
                 </thead>
                 <tbody>
                 <tr th:each="course: ${pendingCourses}">
-                    <td>
-                        <a th:href="@{|/admin/student/${course.studentByCourse.studentId}|}" th:text="${course.studentByCourse}"></a>
-                    </td>
+                    <td th:text="${course.studentByCourse}"></td>
                     <td>[[${course.courseByStudent.courseName}]]</td>
                     <td><a th:href=@{|/admin/course/${page}/approve/${course.studentByCourse.studentId}/${nextSemester.semesterId}/${course.courseByStudent.courseId}|}>
                         Approve</a></td>

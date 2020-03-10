@@ -10,44 +10,52 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    #navbar-custom{
-        background-color:#003D7B ;
-        font-weight:bold ;
+    #navbar-custom {
+        background-color: #003D7B;
+        font-weight: bold;
     }
-    #navbar-custom a{
-        color:#fff ;
+
+    #navbar-custom a {
+        color: #fff;
     }
-    #navbar-custom a:hover{
-        background-color:#D07221 !important;
+
+    #navbar-custom a:hover {
+        background-color: #D07221 !important;
     }
-    .welcome{
-        float:right;
-        color:#003D7B;!important;
-        font-family:Century Gothic;
-        font-weight:bold;
+
+    .welcome {
+        float: right;
+        color: #003D7B;
+    !important;
+        font-family: Century Gothic;
+        font-weight: bold;
     }
-    .btn-link{
-        color:#003D7B !important;
-        font-weight:bold !important;
-    .table_div{
-        max-width:1500px;
-        margin-left:auto;
-        margin-right:auto;
+
+    .btn-link {
+        color: #003D7B !important;
+        font-weight: bold !important;
+
+    .table_div {
+        max-width: 1500px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    body.courselist a.courselist{
-        background-color:#D07221
+
+    body.courselist a.courselist {
+        background-color: #D07221
     }
-    div.add_course{
-        margin-top:30px;
-        margin-bottom:30px;
-        margin-left:50px;
-        color:#003D7B;
-        font-family:Century Gothic;
-        font-weight:bold;
+
+    div.add_course {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 50px;
+        color: #003D7B;
+        font-family: Century Gothic;
+        font-weight: bold;
     }
 </style>
 <style>
-    .course-list{
+    .course-list {
         background-color: #D07221;
     }
 </style>
@@ -60,7 +68,7 @@
 
 <div th:switch="${courseList}">
     <h2 th:case="null">No courses yet!</h2>
-    <div th:case="*"  class="table_div">
+    <div th:case="*" class="table_div">
         <table class="table table-hover">
             <thead class="thead-light">
             <tr>
@@ -81,7 +89,8 @@
                 <td th:text="${course.departmentCourse.departmentName}"></td>
                 <td><a th:href="@{/admin/course/detail/{id}(id=${course.courseId})}">Available semesters</a></td>
                 <td><a th:href="@{/admin/course/{page}/edit/{id}(page = ${page}, id=${course.courseId})}">Edit</a></td>
-                <td><a th:href="@{/admin/course/{page}/delete/{id}(id=${course.courseId}, page=${page})}">Delete</a></td>
+                <td><a th:href="@{/admin/course/{page}/delete/{id}(id=${course.courseId}, page=${page})}">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -91,8 +100,9 @@
     <div style="position:relative; float:right; margin-right:50px">
         <nav>
             <ul class="pagination">
-                <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
-                    <a class="page-link" th:href="@{|/admin/course/list/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                <li class="page-item" th:each="pageNumber : ${pageNumbers}">
+                    <a class="page-link" th:href="@{|/admin/course/list/page/${pageNumber}|}"
+                       th:text=${pageNumber}>1</a>
                 </li>
             </ul>
         </nav>

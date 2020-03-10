@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Spring Boot Security</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -8,44 +8,52 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    #navbar-custom{
-        background-color:#003D7B ;
-        font-weight:bold ;
+    #navbar-custom {
+        background-color: #003D7B;
+        font-weight: bold;
     }
-    #navbar-custom a{
-        color:#fff ;
+
+    #navbar-custom a {
+        color: #fff;
     }
-    #navbar-custom a:hover{
-        background-color:#D07221 !important;
+
+    #navbar-custom a:hover {
+        background-color: #D07221 !important;
     }
-    .welcome{
-        float:right;
-        color:#003D7B;!important;
-        font-family:Century Gothic;
-        font-weight:bold;
+
+    .welcome {
+        float: right;
+        color: #003D7B;
+    !important;
+        font-family: Century Gothic;
+        font-weight: bold;
     }
-    .btn-link{
-        color:#003D7B !important;
-        font-weight:bold !important;
-    .table_div{
-        max-width:1500px;
-        margin-left:auto;
-        margin-right:auto;
+
+    .btn-link {
+        color: #003D7B !important;
+        font-weight: bold !important;
+
+    .table_div {
+        max-width: 1500px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    body.lecturerlist a.lecturerlist{
-        background-color:#D07221
+
+    body.lecturerlist a.lecturerlist {
+        background-color: #D07221
     }
-    div.add_lecturer{
-        margin-top:30px;
-        margin-bottom:30px;
-        margin-left:50px;
-        color:#003D7B;
-        font-family:Century Gothic;
-        font-weight:bold;
+
+    div.add_lecturer {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 50px;
+        color: #003D7B;
+        font-family: Century Gothic;
+        font-weight: bold;
     }
 </style>
 <style>
-    .lecturer-leave{
+    .lecturer-leave {
         background-color: #D07221;
     }
 </style>
@@ -65,22 +73,22 @@
             </tr>
             </thead>
             <tr th:each="leave: ${pendingLeaveRequest}">
-                <td>
-                    <a th:href="@{|/admin/lecturer/{leave.lecturerByLeave.lecturerId}|}" th:text="${leave.lecturerByLeave}"></a>
-                </td>
+                <td th:text="${leave.lecturerByLeave}"></td>
                 <td th:text="${#dates.format(leave.startDate, 'MM-dd-yyyy')}"></td>
                 <td th:text="${#dates.format(leave.endDate, 'MM-dd-yyyy')}"></td>
-                <td><a th:href="@{|/admin/leave/${page}/approve/${leave.lecturerByLeave.lecturerId}/${leave.startDate}|}">
-                    Approve</a></td>
-                <td><a th:href="@{|/admin/leave/${page}/reject/${leave.lecturerByLeave.lecturerId}/${leave.startDate}|}">
-                    Reject</a></td>
+                <td>
+                    <a th:href="@{|/admin/leave/${page}/approve/${leave.lecturerByLeave.lecturerId}/${leave.startDate}|}">
+                        Approve</a></td>
+                <td>
+                    <a th:href="@{|/admin/leave/${page}/reject/${leave.lecturerByLeave.lecturerId}/${leave.startDate}|}">
+                        Reject</a></td>
             </tr>
         </table>
         <div>
             <div>
                 <nav>
                     <ul class="pagination">
-                        <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                        <li class="page-item" th:each="pageNumber : ${pageNumbers}">
                             <a class="page-link"
                                th:href="@{|/admin/leave/request/review/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
                         </li>
@@ -92,80 +100,3 @@
 </div>
 </body>
 </html>
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:form="http://www.w3.org/1999/xhtml">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8"/>-->
-<!--    <title>Spring Boot Security</title>-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">-->
-<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>-->
-<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>-->
-<!--</head>-->
-
-<!--<style>-->
-<!--    #navbar-custom{-->
-<!--        background-color:#003D7B ;-->
-<!--        font-weight:bold ;-->
-<!--    }-->
-<!--    #navbar-custom a{-->
-<!--        color:#fff ;-->
-<!--    }-->
-<!--    #navbar-custom a:hover{-->
-<!--        background-color:#D07221 !important;-->
-<!--    }-->
-<!--    .welcome{-->
-<!--        float:right;-->
-<!--        color:#003D7B;!important;-->
-<!--        font-family:Century Gothic;-->
-<!--        font-weight:bold;-->
-<!--    }-->
-<!--    .btn-link{-->
-<!--        color:#003D7B !important;-->
-<!--        font-weight:bold !important;-->
-<!--</style>-->
-<!--<style>-->
-<!--    .lecturer-leave{-->
-<!--        background-color: #D07221;-->
-<!--    }-->
-<!--</style>-->
-<!--<body>-->
-<!--<div th:insert="~{admin/index :: adminheader}"></div>-->
-<!--<div th:switch="${pendingLeaveRequest}">-->
-<!--    <h2 th:case="null">No pending leave request</h2>-->
-<!--    <div th:case="*">-->
-<!--        <table>-->
-<!--            <tr>-->
-<!--                <td>Lecturer name</td>-->
-<!--                <td>Start date</td>-->
-<!--                <td>End date</td>-->
-<!--                <td>Approve</td>-->
-<!--                <td>Reject</td>-->
-<!--            </tr>-->
-<!--            <tr th:each="leave: ${pendingLeaveRequest}">-->
-<!--                <td th:text="${leave.lecturerByLeave}"></td>-->
-<!--                <td th:text="${#dates.format(leave.startDate, 'MM-dd-yyyy')}"></td>-->
-<!--                <td th:text="${#dates.format(leave.endDate, 'MM-dd-yyyy')}"></td>-->
-<!--                <td><a th:href="@{|/admin/leave/${page}/approve/${leave.lecturerByLeave.lecturerId}/${leave.startDate}|}">-->
-<!--                    Approve</a></td>-->
-<!--                <td><a th:href="@{|/admin/leave/${page}/reject/${leave.lecturerByLeave.lecturerId}/${leave.startDate}|}">-->
-<!--                    Reject</a></td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--        <div>-->
-<!--            <div>-->
-<!--                <nav>-->
-<!--                    <ul>-->
-<!--                        <li class="page-item" th:each="pageNumber : ${pageNumbers}" >-->
-<!--                            <a class="page-link"-->
-<!--                               th:href="@{|/admin/course/registration/review/page/${pageNumber}|}" th:text=${pageNumber}>1</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </nav>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->

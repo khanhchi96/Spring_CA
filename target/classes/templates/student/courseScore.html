@@ -1,113 +1,72 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--<meta charset="ISO-8859-1">-->
-<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--<title>stuCourseEnrolled</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Academic Records</h1>-->
-
-<!--<a th:href="@{/student/student/}">Navigate</a>-->
-<!--<div th:switch="${semCourseMap}">-->
-<!--     <h2 th:case="null">Not available</h2>-->
-<!--     <div th:case="*">-->
-<!--          <table>-->
-<!--               <tr>-->
-<!--                    <th>Semester</th>-->
-<!--               </tr>-->
-<!--               <tr th:each="mapEntry : ${semCourseMap}">-->
-<!--                    <td th:text="${mapEntry.key.semesterLabel}">11</td>-->
-<!--                    <td>-->
-<!--                         <table>-->
-<!--                              <tr>-->
-<!--                                   <th>Course Code</th>-->
-<!--                                   <th>Course Name</th>-->
-<!--                                   <th>Course Unit</th>-->
-<!--                                   <th>Score</th>-->
-<!--                              </tr>-->
-<!--                              <tr th:each="studentcourse: ${mapEntry.value}">-->
-<!--                                   <td th:text="${studentcourse.courseByStudent.courseCode}">11</td>-->
-<!--                                   <td th:text="${studentcourse.courseByStudent.courseName}">11</td>-->
-<!--                                   <td th:text="${studentcourse.courseByStudent.courseUnit}">11</td>-->
-<!--                                   <td th:text="${studentcourse.score}">11</td>-->
-<!--                              </tr>-->
-<!--                         </table>-->
-<!--                    </td>-->
-<!--               </tr>-->
-<!--          </table>-->
-
-<!--          GPA:<p th:text="${student.GPA}"></p>-->
-<!--     </div>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-     <meta charset="ISO-8859-1">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-     <title>stuCourseEnrolled</title>
+    <meta charset="ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>stuCourseEnrolled</title>
 </head>
 <style>
-     .navbar-custom{
-          background-color:#003D7B;
-          font-family:Century Gothic;
-          font-weight:bold;
-     }
-     .navbar-custom a{
-          color:#fff
-     }
-     .navbar-custom a:hover{
-          background-color:#D07221 !important;
-     }
-     .submit-custom{
-          background-color:white
-     }
-     .container{
-          max-width=1400px
-     }
+    .navbar-custom {
+        background-color: #003D7B;
+        font-family: Century Gothic;
+        font-weight: bold;
+    }
+
+    .navbar-custom a {
+        color: #fff
+    }
+
+    .navbar-custom a:hover {
+        background-color: #D07221 !important;
+    }
+
+    .submit-custom {
+        background-color: white
+    }
+
+    .container {
+        max-width = 1400px
+    }
 </style>
 <body>
 <div th:insert="~{student/index :: studentheader}"></div>
 <h1>Academic Records</h1>
 <div class="container">
 
-     <!--<a th:href="@{/student/student/}">Navigate</a>-->
+    <!--<a th:href="@{/student/student/}">Navigate</a>-->
 
-     <table class="table">
-          <tr>
-               <th>Semester</th>
-          </tr>
-          <tr th:each="mapEntry : ${semCourseMap}">
-               <td th:text="${mapEntry.key.semesterLabel}">11</td>
-               <td>
-                    <table>
-                         <tr>
-                              <th>Course Code</th>
-                              <th>Course Name</th>
-                              <th>Course Unit</th>
-                              <th>Score</th>
-                         </tr>
-                         <tr th:each="studentcourse: ${mapEntry.value}">
-                              <td th:text="${studentcourse.courseByStudent.courseCode}">11</td>
-                              <td th:text="${studentcourse.courseByStudent.courseName}">11</td>
-                              <td th:text="${studentcourse.courseByStudent.courseUnit}">11</td>
-                              <td th:text="${studentcourse.score}">11</td>
-                         </tr>
-                    </table>
-               </td>
+    <table class="table">
+        <tr>
+            <th>Semester</th>
+        </tr>
+        <tr th:each="mapEntry : ${semCourseMap}">
+            <td th:text="${mapEntry.key.semesterLabel}">11</td>
+            <td>
+                <table>
+                    <tr>
+                        <th>Course Code</th>
+                        <th>Course Name</th>
+                        <th>Course Unit</th>
+                        <th>Score</th>
+                    </tr>
+                    <tr th:each="studentcourse: ${mapEntry.value}">
+                        <td th:text="${studentcourse.courseByStudent.courseCode}">11</td>
+                        <td th:text="${studentcourse.courseByStudent.courseName}">11</td>
+                        <td th:text="${studentcourse.courseByStudent.courseUnit}">11</td>
+                        <td th:text="${studentcourse.score}">11</td>
+                    </tr>
+                </table>
+            </td>
 
-          </tr>
+        </tr>
 
-     </table>
-     <tr>
-          GPA:<p th:text="${student.GPA}"></p>
-     </tr>
+    </table>
+    <tr>
+        GPA:<p th:text="${student.GPA}"></p>
+    </tr>
 </div>
 </body>
 </html>

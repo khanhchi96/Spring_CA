@@ -11,51 +11,86 @@
 </head>
 
 <style>
-    #navbar-custom{
-        background-color:#003D7B ;
-        font-weight:bold ;
+    #navbar-custom {
+        background-color: #003D7B;
+        font-weight: bold;
     }
-    #navbar-custom a{
-        color:#fff ;
+
+    #navbar-custom a {
+        color: #fff;
     }
-    #navbar-custom a:hover{
-        background-color:#D07221 !important;
+
+    #navbar-custom a:hover {
+        background-color: #D07221 !important;
     }
-    .welcome{
-        float:right;
-        color:#003D7B;!important;
-        font-family:Century Gothic;
-        font-weight:bold;
+
+    .welcome {
+        float: right;
+        color: #003D7B;
+    !important;
+        font-family: Century Gothic;
+        font-weight: bold;
     }
-    .btn-link{
-        color:#003D7B !important;
-        font-weight:bold !important;
+
+    .btn-link {
+        color: #003D7B !important;
+        font-weight: bold !important;
 </style>
 <style>
-    .lecturer-list{
+    .lecturer-list {
         background-color: #D07221;
     }
 </style>
 <body>
 <div th:insert="~{admin/index :: adminheader}"></div>
-<div  style="margin-top:30px">
+<div style="margin-top:30px">
     <div class="container-fluid">
         <ul class="nav navbar navbar-left d-flex d-inline-flex">
-            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex" style=" background-color: #003D7B; color: white" th:href="@{|/admin/lecturer/${page}/edit/${lecturer.lecturerId}|}">Edit</a></li>
-            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex" style=" background-color: #003D7B; color: white" th:href="@{|/admin/lecturer/${page}/delete/${lecturer.lecturerId}|}">Delete</a></li>
+            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex"
+                                                                           style=" background-color: #003D7B; color: white"
+                                                                           th:href="@{|/admin/lecturer/${page}/edit/${lecturer.lecturerId}|}">Edit</a>
+            </li>
+            <li class="nav-item d-inline-flex  align-items-center mr-2"><a class="nav-link d-inline-flex"
+                                                                           style=" background-color: #003D7B; color: white"
+                                                                           th:href="@{|/admin/lecturer/${page}/delete/${lecturer.lecturerId}|}">Delete</a>
+            </li>
         </ul>
     </div>
     <div class="container">
         <table class="table">
             <tbody>
-            <tr><td th:text="${lecturer}"></td><td></td></tr>
-            <tr><td> Gender:</td> <td>[[${lecturer.gender}]]</td></tr>
-            <tr><td> Birthdate:</td> <td>[[${#dates.format(lecturer.birthDate, 'dd-MM-yyyy')}]]</td></tr>
-            <tr><td> Mobile phone:</td> <td>[[${lecturer.mobile}]]</td></tr>
-            <tr><td> Email:</td> <td>[[${lecturer.email}]]</td></tr>
-            <tr><td> Address:</td><td> [[${lecturer.address}]]</td></tr>
-            <tr><td> Department:</td><td> [[${lecturer.departmentLecturer.departmentName}]]</td></tr>
-            <tr><td> List of courses:</td><td></td></tr>
+            <tr>
+                <td th:text="${lecturer}"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td> Gender:</td>
+                <td>[[${lecturer.gender}]]</td>
+            </tr>
+            <tr>
+                <td> Birthdate:</td>
+                <td>[[${#dates.format(lecturer.birthDate, 'dd-MM-yyyy')}]]</td>
+            </tr>
+            <tr>
+                <td> Mobile phone:</td>
+                <td>[[${lecturer.mobile}]]</td>
+            </tr>
+            <tr>
+                <td> Email:</td>
+                <td>[[${lecturer.email}]]</td>
+            </tr>
+            <tr>
+                <td> Address:</td>
+                <td> [[${lecturer.address}]]</td>
+            </tr>
+            <tr>
+                <td> Department:</td>
+                <td> [[${lecturer.departmentLecturer.departmentName}]]</td>
+            </tr>
+            <tr>
+                <td> List of courses:</td>
+                <td></td>
+            </tr>
             </tbody>
         </table>
         <table style="width: 100%">
@@ -65,9 +100,9 @@
                 <td style="width:25%;">Course name</td>
             </tr>
             <tr th:each="course: ${coursesByLecturer}">
-                <td style="width:25%;" th:text = "${course.semesterLecturerCourse.semesterLabel}"></td>
-                <td style="width:25%;" th:text = "${course.courseByLecturer.courseCode}"></td>
-                <td style="width:25%;" th:text = "${course.courseByLecturer.courseName}"></td>
+                <td style="width:25%;" th:text="${course.semesterLecturerCourse.semesterLabel}"></td>
+                <td style="width:25%;" th:text="${course.courseByLecturer.courseCode}"></td>
+                <td style="width:25%;" th:text="${course.courseByLecturer.courseName}"></td>
             </tr>
         </table>
     </div>

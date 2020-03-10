@@ -7,7 +7,6 @@ import SpringCA.entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -63,7 +62,7 @@ public class AdminServiceImpl implements AdminService {
         emailService.sendSimpleMessage(new String[]{student.getEmail()}, mailSubject, text);
     }
 
-    public void reviewLeave(int lecturerId, Date date, String action) throws ParseException {
+    public void reviewLeave(int lecturerId, Date date, String action) {
         SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy");
         LecturerLeaveId lecturerLeaveId = new LecturerLeaveId(lecturerId, date);
         LecturerLeave lecturerLeave = lecturerLeaveRepository.findById(lecturerLeaveId)

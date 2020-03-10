@@ -63,7 +63,7 @@
         <tr>
             <td>BirthDate:</td>
             <td>
-                <p th:text="${student.birthDate}">Birth Date</p>
+                <p th:text="${#dates.format(student.birthDate, 'dd-MM-yyyy')}">Birth Date</p>
             </td>
         </tr>
 
@@ -130,7 +130,6 @@
         <!--<p th:text="${student.degree.degreeLabel}">Degree</p>-->
     </table>
     <a class="btn" th:href="@{/student/changePassword/{username}(username=${studentUser.username})}">Change password</a>
-
 
     <a class="btn" th:href="@{/student/edit/}+${student.studentId}"> Edit Contact Information </a>
 </div>

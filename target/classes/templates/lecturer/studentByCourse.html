@@ -6,34 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
 </head>
 <style>
-    h2{color: black}
+    h2 {
+        color: black
+    }
 </style>
-
 <body class="studentByCourseList">
-
-
-
-
-
-
-
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#003D7B">
-
-
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/lecturer/course/list/page/1}">View assigned courses</a>
             </li>
@@ -47,48 +40,28 @@
                 <a th:href="@{/lecturer/leave/rejected/list}" class="nav-link">View rejected leaves</a>
             </li>
         </ul>
-
         <a class="navbar-brand" href="#">
             <p th:if="${lecturerUser.lecturerUser.middleName} != null">Welcome, <a th:href="@{/lecturer/profile}">[[${lecturerUser.lecturerUser.lastName}]]
                 [[${lecturerUser.lecturerUser.middleName}]] [[${lecturerUser.lecturerUser.firstName}]]</a></p>
             <p th:if="${lecturerUser.lecturerUser.middleName} == null">Welcome, <a>[[${lecturerUser.lecturerUser.lastName}]]
                 [[${lecturerUser.lecturerUser.firstName}]]</a></p>
         </a>
-
         <span class="navbar-text">
-
-
       <form th:action="@{/lecturer/j_spring_security_logout}" method="post">
-    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-    <input type="submit" value="Logout" class="btn btn-dark" />
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+    <input type="submit" value="Logout" class="btn btn-dark"/>
 	</form>
     </span>
     </div>
 </nav>
-
-
-
-
-
-
 <main role="main" class="container">
     <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded box-shadow">
         <div class="lh-100">
-
-
-
-
             <h2>Student List</h2>
-
-
-
-
-
-
             <div th:switch="${studentByCourseList}">
                 <h2 th:case="null">No students registered for this course yet!</h2>
                 <div th:case="*" class="table_div">
-                    <table class="table table-bordered" >
+                    <table class="table table-bordered">
                         <thead class="thead-light">
                         <tr>
                             <th scope="col">Student name</th>
@@ -105,38 +78,25 @@
                             <td th:text="${studentCourse.courseByStudent.courseName}"></td>
                             <td th:text="${studentCourse.semesterStudentCourse.semesterLabel}"></td>
                             <td><a th:href="@{|/lecturer/update/${page}/score/${studentCourse.studentByCourse.studentId}/
-                ${courseId}/${semesterId}|}" class="btn" style="background-color:#003D7B; color: white;">Update score</a></td>
+                ${courseId}/${semesterId}|}" class="btn" style="background-color:#003D7B; color: white;">Update
+                                score</a></td>
                         </tr>
                         </tbody>
                     </table>
                     <div style="position:relative; float:right; margin-right:50px">
                         <nav>
-                            <ul class="pagination" >
-                                <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
+                            <ul class="pagination">
+                                <li class="page-item" th:each="pageNumber : ${pageNumbers}">
                                     <a class="page-link" th:href="@{|/lecturer/course/student/${courseId}
                         /${semesterId}/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
                                 </li>
-
                             </ul>
                         </nav>
                     </div>
                 </div>
-
             </div>
-
-
-
-
-
-
-
         </div>
     </div>
 </main>
-
-
-
-
-
 </body>
 </html>

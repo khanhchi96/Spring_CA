@@ -40,6 +40,50 @@
     <h4 th:text="${adminUser.adminUser}"></h4>
     <h4><a class="btn" style="background-color: #003D7B;color: white;font-weight: bold"
            th:href="@{/admin/changePassword/{username}(username=${adminUser.username})}">Change password</a></h4>
+    <br/>
+    <table class="table">
+        <!--<p th:text="${student.firstName}"></p>-->
+        <tr>
+            <td>Name:</td>
+            <td th:text = "${adminUser.adminUser}"></td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td>
+                <p th:text = "${adminUser.adminUser.gender}">Gender</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>BirthDate:</td>
+            <td>
+                <p th:text="${#dates.format(adminUser.adminUser.birthDate, 'dd-MM-yyyy')}">Birth Date</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Email:</td>
+            <td>
+                <p th:text = "${adminUser.adminUser.email}">Email</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Mobile:</td>
+            <td>
+                <p th:text = "${adminUser.adminUser.mobile}">Mobile</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Address:</td>
+            <td>
+                <p th:text = "${adminUser.adminUser.address}">Address</p>
+            </td>
+        </tr>
+
+    </table>
 </div>
+
 </body>
 </html>

@@ -11,28 +11,33 @@
 </head>
 
 <style>
-    #navbar-custom{
-        background-color:#003D7B ;
-        font-weight:bold ;
+    #navbar-custom {
+        background-color: #003D7B;
+        font-weight: bold;
     }
-    #navbar-custom a{
-        color:#fff ;
+
+    #navbar-custom a {
+        color: #fff;
     }
-    #navbar-custom a:hover{
-        background-color:#D07221 !important;
+
+    #navbar-custom a:hover {
+        background-color: #D07221 !important;
     }
-    .welcome{
-        float:right;
-        color:#003D7B;!important;
-        font-family:Century Gothic;
-        font-weight:bold;
+
+    .welcome {
+        float: right;
+        color: #003D7B;
+    !important;
+        font-family: Century Gothic;
+        font-weight: bold;
     }
-    .btn-link{
-        color:#003D7B !important;
-        font-weight:bold !important;
+
+    .btn-link {
+        color: #003D7B !important;
+        font-weight: bold !important;
 </style>
 <style>
-    .course-list{
+    .course-list {
         background-color: #D07221;
     }
 </style>
@@ -48,14 +53,15 @@
             <div style="margin-top: 20px;">
                 <h5 class="card-text">Available semesters:</h5>
             </div>
-            <p th:each="semester: ${courseSemesters}"  style="margin-top: 20px">
+            <p th:each="semester: ${courseSemesters}" style="margin-top: 20px">
                 <a class="btn"
                    style="background-color: #003D7B;color:white; font-weight: bold"
                    th:href="@{/admin/course/detail/{courseId}/{semesterId}/page/1(courseId=${course.courseId}, semesterId = ${semester.semesterId})}">
                     [[${semester.semesterLabel}]]
                 </a><br/>
             </p>
-            <a class="btn" style="background-color: #003D7B;color:white; font-weight: bold" th:href="@{/admin/course/detail/{id}/addSemester(id=${course.courseId})}">Add Semester</a>
+            <a class="btn" style="background-color: #003D7B;color:white; font-weight: bold"
+               th:href="@{/admin/course/detail/{id}/addSemester(id=${course.courseId})}">Add Semester</a>
         </div>
     </div>
 </div>

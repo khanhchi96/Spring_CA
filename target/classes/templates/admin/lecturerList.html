@@ -10,41 +10,48 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <style>
-    #navbar-custom{
-        background-color:#003D7B ;
-        font-weight:bold ;
+    #navbar-custom {
+        background-color: #003D7B;
+        font-weight: bold;
     }
-    #navbar-custom a{
-        color:#fff ;
+
+    #navbar-custom a {
+        color: #fff;
     }
-    #navbar-custom a:hover{
-        background-color:#D07221 !important;
+
+    #navbar-custom a:hover {
+        background-color: #D07221 !important;
     }
-    .welcome{
-        float:right;
-        color:#003D7B;!important;
-        font-family:Century Gothic;
-        font-weight:bold;
+
+    .welcome {
+        float: right;
+        color: #003D7B;
+    !important;
+        font-family: Century Gothic;
+        font-weight: bold;
     }
-    .btn-link{
-        color:#003D7B !important;
-        font-weight:bold !important;
-    .table_div{
-        max-width:1500px;
-        margin-left:auto;
-        margin-right:auto;
+
+    .btn-link {
+        color: #003D7B !important;
+        font-weight: bold !important;
+
+    .table_div {
+        max-width: 1500px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    div.add_lecturer{
-        margin-top:30px;
-        margin-bottom:30px;
-        margin-left:50px;
-        color:#003D7B;
-        font-family:Century Gothic;
-        font-weight:bold;
+
+    div.add_lecturer {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        margin-left: 50px;
+        color: #003D7B;
+        font-family: Century Gothic;
+        font-weight: bold;
     }
 </style>
 <style>
-    .lecturer-list{
+    .lecturer-list {
         background-color: #D07221;
     }
 </style>
@@ -52,14 +59,15 @@
 
 <div th:insert="~{admin/index :: adminheader}"></div>
 
-<div class="container-fluid"  style="margin-top: 30px; margin-bottom: 20px">
-    <a href="/admin/lecturer/addLecturer" class="add_lecturer" style="font-weight: bolder; color:#003D7B">Add a new Lecturer</a>
+<div class="container-fluid" style="margin-top: 30px; margin-bottom: 20px">
+    <a href="/admin/lecturer/addLecturer" class="add_lecturer" style="font-weight: bolder; color:#003D7B">Add a new
+        Lecturer</a>
 </div>
 
 <div th:switch="${lecturerList}">
     <h2 th:case="null">No lecturers yet!</h2>
     <div th:case="*" class="table_div">
-        <table class="table table-hover" >
+        <table class="table table-hover">
             <thead class="thead-light">
             <tr>
                 <th>Name</th>
@@ -84,8 +92,11 @@
                 <td th:text="${lecturer.email}"></td>
                 <td th:text="${lecturer.address}"></td>
                 <td th:text="${lecturer.departmentLecturer.departmentName}"></td>
-                <td><a th:href="@{/admin/lecturer/{page}/edit/{id}(page = ${page}, id=${lecturer.lecturerId})}">Edit</a></td>
-                <td><a th:href="@{/admin/lecturer/{page}/delete/{id}(id=${lecturer.lecturerId}, page = ${page})}">Delete</a></td>
+                <td><a th:href="@{/admin/lecturer/{page}/edit/{id}(page = ${page}, id=${lecturer.lecturerId})}">Edit</a>
+                </td>
+                <td>
+                    <a th:href="@{/admin/lecturer/{page}/delete/{id}(id=${lecturer.lecturerId}, page = ${page})}">Delete</a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -95,19 +106,13 @@
     <div style="position:relative; float:right; margin-right:50px">
         <nav>
             <ul class="pagination">
-                <li class="page-item" th:each="pageNumber : ${pageNumbers}" >
-                    <a class="page-link" th:href="@{|/admin/lecturer/list/page/${pageNumber}|}" th:text=${pageNumber}>1</a>
+                <li class="page-item" th:each="pageNumber : ${pageNumbers}">
+                    <a class="page-link" th:href="@{|/admin/lecturer/list/page/${pageNumber}|}"
+                       th:text=${pageNumber}>1</a>
                 </li>
             </ul>
         </nav>
     </div>
 </div>
 </body>
-<script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-    function color() {
-        $(this).style("background-color", "black");
-    }
-</script>
 </html>

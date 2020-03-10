@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Spring Boot Security</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -143,11 +143,12 @@
 </head>
 <body>
 <div class="container">
+    <h5 style="margin-top: 20px;"><a href="/" style="color: #fff">Back to home page</a></h5>
     <div class="row">
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Sign In</h5>
+                    <h5 class="card-title text-center">Sign In - [[${id}]]</h5>
                     <h4 th:text="${message}"></h4>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <form class="form-signin" name='login-form' th:action="@{/{id}/j_spring_security_login(id=${id})}"

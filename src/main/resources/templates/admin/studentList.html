@@ -34,6 +34,7 @@
     .btn-link {
         color: #003D7B !important;
         font-weight: bold !important;
+    }
 
     .table_div {
         max-width: 1500px;
@@ -64,7 +65,7 @@
 </div>
 
 <div th:switch="${studentList}">
-    <h2 th:case="null">No users yet!</h2>
+    <h2 th:case="null">No students yet!</h2>
     <div th:case="*" class="table_div">
         <table class="table table-hover">
             <thead class="thead-light">

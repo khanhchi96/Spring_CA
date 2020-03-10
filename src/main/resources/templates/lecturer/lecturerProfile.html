@@ -36,7 +36,7 @@
             </li>
         </ul>
         <a class="navbar-brand">
-            <p th:text="${lecturerUser.lecturerUser.firstName}"></p>
+            <p th:text="${lecturerUser.lecturerUser}"></p>
         </a>
         <span class="navbar-text">
       <form th:action="@{/lecturer/j_spring_security_logout}" method="post">
@@ -46,5 +46,56 @@
     </span>
     </div>
 </nav>
+
+<div class="container" style="margin-top: 30px">
+    <h4 th:text="${lecturerUser.lecturerUser}"></h4>
+    <h4><a class="btn" style="background-color: #003D7B;color: white;font-weight: bold"
+           th:href="@{|/lecturer/changePassword/${lecturerUser.username}|}">Change password</a></h4>
+
+    <br/>
+
+    <table class="table">
+        <!--<p th:text="${student.firstName}"></p>-->
+        <tr>
+            <td>Name:</td>
+            <td th:text = "${lecturerUser.lecturerUser}"></td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td>
+                <p th:text = "${lecturerUser.lecturerUser.gender}">Gender</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>BirthDate:</td>
+            <td>
+                <p th:text="${#dates.format(lecturerUser.lecturerUser.birthDate, 'dd-MM-yyyy')}">Birth Date</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Email:</td>
+            <td>
+                <p th:text = "${lecturerUser.lecturerUser.email}">Email</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Mobile:</td>
+            <td>
+                <p th:text = "${lecturerUser.lecturerUser.mobile}">Mobile</p>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Address:</td>
+            <td>
+                <p th:text = "${lecturerUser.lecturerUser.address}">Address</p>
+            </td>
+        </tr>
+
+    </table>
+</div>
 </body>
 </html>

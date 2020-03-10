@@ -1,19 +1,25 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Spring Boot Security</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
 </head>
 <style>
-    [type=button], [type=reset], [type=submit], button{
+    [type=button], [type=reset], [type=submit], button {
         -webkit-appearance: unset;
     }
 
-    .btn-primary{
+    .btn-primary {
         margin-left: calc(50% - 61px);
     }
 </style>
@@ -34,34 +40,40 @@
             <div class="row">
                 <div class="card-deck">
                     <div class="card">
-                        <img src="https://image.freepik.com/free-photo/woman-working-with-laptop-modern-office_23-2147656704.jpg" class="card-img-top" alt="...">
+                        <img src="https://image.freepik.com/free-photo/woman-working-with-laptop-modern-office_23-2147656704.jpg"
+                             class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title" style="color:#003D7B">Admin Login Page</h5>
                             <p class="card-text"></p>
                         </div>
-                        <div class="card-footer" >
-                            <a th:href="@{/login_{id}(id='admin')}" type="button" class="btn btn-primary" style="background-color:#003D7B">Admin Login</a>
+                        <div class="card-footer">
+                            <a th:href="@{/login_{id}(id='admin')}" type="button" class="btn btn-primary"
+                               style="background-color:#003D7B">Admin Login</a>
                         </div>
                     </div>
                     <div class="card">
-                        <img src="https://image.freepik.com/free-photo/coach-by-whiteboard_1098-12970.jpg" class="card-img-top" alt="...">
+                        <img src="https://image.freepik.com/free-photo/coach-by-whiteboard_1098-12970.jpg"
+                             class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title" style="color:#003D7B">Lecturer Login Page</h5>
                             <p class="card-text"></p>
                         </div>
                         <div class="card-footer">
-                            <a th:href="@{/login_{id}(id='lecturer')}" type="button" class="btn btn-primary" style="background-color:#003D7B">Lecturer Login</a>
+                            <a th:href="@{/login_{id}(id='lecturer')}" type="button" class="btn btn-primary"
+                               style="background-color:#003D7B">Lecturer Login</a>
 
                         </div>
                     </div>
                     <div class="card">
-                        <img src="https://www.apple.com/newsroom/images/passions/education/Apple_Layton-Primary-School-and-Institute-De-Amicis_Young-Student-Coding-iPad_100219_big.jpg.large.jpg" class="card-img-top" alt="...">
+                        <img src="https://www.apple.com/newsroom/images/passions/education/Apple_Layton-Primary-School-and-Institute-De-Amicis_Young-Student-Coding-iPad_100219_big.jpg.large.jpg"
+                             class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title" style="color:#003D7B">Student Login Page</h5>
                             <p class="card-text"></p>
                         </div>
                         <div class="card-footer">
-                            <a th:href="@{/login_{id}(id='student')}" type="button" class="btn btn-primary" style="background-color:#003D7B">student Login</a>
+                            <a th:href="@{/login_{id}(id='student')}" type="button" class="btn btn-primary"
+                               style="background-color:#003D7B">student Login</a>
 
                         </div>
                     </div>
